@@ -10,8 +10,10 @@ import java.io.UnsupportedEncodingException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
@@ -26,7 +28,7 @@ public class startUp extends JFrame implements ActionListener {
 	JButton start;
 	JLabel user, welcome, password, message;
 	JTextField userID, userPW;
-
+	JCheckBox saveMe;
 	public static void main(String[] args) throws IOException {
 		new startUp();
 
@@ -35,13 +37,12 @@ public class startUp extends JFrame implements ActionListener {
 	public startUp() throws IOException {
 
 		JLabel background = new JLabel(
-				new ImageIcon("C:\\Users\\Helvijs\\eclipse-workspace\\TestGame\\Launcher_BG\\Launcher_BG.jpg"));
+				new ImageIcon("Launcher_BG\\Launcher_BG.jpg"));
 
 		Launcher.setSize(900, 600);
 		Launcher.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		Launcher.setTitle("Test\u2122");
 		Launcher.setLocationRelativeTo(null);
-		Launcher.getContentPane().setBackground(new Color(255, 155, 60));
 		Launcher.setResizable(false);
 		Launcher.setLayout(new BorderLayout());
 		Launcher.add(background);
@@ -75,6 +76,16 @@ public class startUp extends JFrame implements ActionListener {
 		userPW.setForeground(Color.white);
 		userPW.setOpaque(false);
 		background.add(userPW);
+		
+		saveMe = new JCheckBox("Save Credentials");
+		saveMe.setSize(300,80);
+		saveMe.setLocation(80,380);
+		saveMe.setFocusPainted(false);
+		saveMe.setForeground(Color.WHITE.brighter());
+		saveMe.setOpaque(false);
+		saveMe.setContentAreaFilled(false);
+		saveMe.setFont(labelFont);
+		background.add(saveMe);
 
 		welcome = new JLabel("Speed typing Alpha");
 		welcome.setSize(600, 70);
@@ -83,13 +94,14 @@ public class startUp extends JFrame implements ActionListener {
 		welcome.setForeground(Color.green.brighter());
 		background.add(welcome);
 
-		start = new JButton("Start");
+		start = new JButton("Login");
 		start.setSize(200, 40);
-		start.setLocation(300, 350);
+		start.setLocation(300, 450);
 		start.setOpaque(false);
 		start.setContentAreaFilled(false);
 		start.setFont(ButtonFont);
 		start.addActionListener(this);
+		start.setFocusPainted(false);
 		start.setForeground(Color.WHITE.brighter());
 		background.add(start);
 
@@ -100,6 +112,7 @@ public class startUp extends JFrame implements ActionListener {
 		message.setForeground(Color.RED.darker());
 		background.add(message);
 
+		
 		Launcher.setVisible(true);
 	}
 
