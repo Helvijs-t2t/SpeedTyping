@@ -1,0 +1,101 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+
+public class startUp extends JFrame implements ActionListener {
+	private static final long serialVersionUID = 1;
+	JFrame Launcher = new JFrame();
+	Font labelFont =  (new Font("arial", 5, 25));
+	Font ButtonFont =  (new Font("arial", 15, 35));
+	Font welcomeFont =  (new Font("arial", 5, 65));
+	JButton start;
+	JLabel user,welcome, password;
+	JTextField userID,userPW;
+
+	public static void main (String [] args) throws IOException {
+		new startUp();
+		
+	}
+	
+	public startUp() throws IOException {
+		
+		
+		JLabel background=new JLabel(new ImageIcon("C:\\Users\\Helvijs\\eclipse-workspace\\TestGame\\Launcher_BG\\Launcher_BG.jpg"));
+	      
+	        
+		Launcher.setSize(900, 600);
+		Launcher.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		Launcher.setTitle("Test\u2122");
+		Launcher.setLocationRelativeTo(null);
+		Launcher.getContentPane().setBackground(new Color(255, 155, 60));
+		Launcher.setResizable(false);
+		Launcher.setLayout(new BorderLayout());
+		Launcher.add(background);
+		
+		user = new JLabel("User ID");
+		user.setSize(120, 40);
+		user.setLocation(80, 200);
+		user.setFont(labelFont);
+		user.setForeground(Color.white);
+		background.add(user);
+		
+		userID = new JTextField();
+		userID.setSize(180,40);
+		userID.setLocation(205,200);
+		userID.setFont(labelFont);
+		userID.setForeground(Color.white);
+		userID.setOpaque(false);
+		background.add(userID);
+		
+		password = new JLabel("Password");
+		password.setSize(120, 40);
+		password.setLocation(80, 280);
+		password.setFont(labelFont);
+		password.setForeground(Color.white);
+		background.add(password);
+		
+		userPW = new JTextField();
+		userPW.setSize(180,40);
+		userPW.setLocation(205,280);
+		userPW.setFont(labelFont);
+		userPW.setForeground(Color.white);
+		userPW.setOpaque(false);
+		background.add(userPW);
+		
+		welcome = new JLabel("Speed typing Alpha");
+		welcome.setSize(600, 70);
+		welcome.setLocation(150, 5);
+		welcome.setFont(welcomeFont);
+		welcome.setForeground(Color.green.brighter());
+		background.add(welcome);
+		
+		start = new JButton("Start");
+		start.setSize(200,40);
+		start.setLocation(300,350);
+		start.setOpaque(false);
+		start.setContentAreaFilled(false);
+		//start.setBorderPainted(false);
+		start.setFont(ButtonFont);
+		start.setForeground(Color.WHITE.brighter());
+		background.add(start);
+		
+		Launcher.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	
+		
+	}
+	
+}
