@@ -126,11 +126,11 @@ public class startUp extends JFrame implements ActionListener {
 			}else if(UPW.length()==0) {
 				message.setText("Password must be specified!");
 			}else {
-
+				if (saveMe.isSelected()==true) {
 				writer.println("UID: " +UID);
 				writer.println("UPW: "+ UPW);
 				writer.close();
-
+				}
 					Launcher.setVisible(false);
 						new userProfile();
 			}
