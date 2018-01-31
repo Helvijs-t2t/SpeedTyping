@@ -13,14 +13,23 @@ import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
 public class userProfile extends JFrame implements ActionListener{
+ static final long serialVersionUID = 1L;
+
 JFrame profile = new JFrame();
 
 JFileChooser chooser= new JFileChooser();
 
 	Font btnFont = new Font("Arial",5,55);
 	JButton Start, browse;
+	
+JLabel profilePic;
 	public userProfile() {
 		JLabel profileBG=new JLabel(new ImageIcon("Launcher_BG\\profile_BG.jpg"));
+		
+		profilePic = new JLabel(new ImageIcon("Launcher_BG\\default-profile.png"));
+		profilePic.setLocation(10,10);
+		profilePic.setSize(200,200);
+		profileBG.add(profilePic);
 		
 		profile.setSize(1200, 800);
 		profile.setLocationRelativeTo(null);
@@ -45,6 +54,7 @@ JFileChooser chooser= new JFileChooser();
 		Start.setFocusPainted(false);
 		Start.setFocusable(false);
 		Start.setBackground(Color.YELLOW.darker());
+		Start.addActionListener(this);
 		profileBG.add(Start);
 		
 		profile.setVisible(true);
@@ -57,7 +67,12 @@ JFileChooser chooser= new JFileChooser();
 			if (choice != JFileChooser.APPROVE_OPTION) return;
 
 			File chosenFile = chooser.getSelectedFile();
+			
 		}
-		
+		if(e.getSource()==Start) {
+			this.setVisible(false);
+			new StartGame();
+			
+		}
 	}
 }
