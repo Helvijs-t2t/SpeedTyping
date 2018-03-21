@@ -34,7 +34,7 @@ JFileChooser chooser= new JFileChooser();
 		
 		Level1 = new JButton("1");
 		Level1.setSize(180,180);
-		Level1.setLocation(70,50);
+		Level1.setLocation(70,80);
 		Level1.setForeground(Color.BLACK.darker());
 		Level1.setFont(new Font("Arial",5,55));
 		Level1.setFocusable(false);
@@ -45,7 +45,7 @@ JFileChooser chooser= new JFileChooser();
 		
 		Level2 = new JButton("2");
 		Level2.setSize(180,180);
-		Level2.setLocation(270,50);
+		Level2.setLocation(270,80);
 		Level2.setForeground(Color.BLACK.darker());
 		Level2.setBorder(border1);
 		Level2.setFocusable(false);
@@ -56,7 +56,7 @@ JFileChooser chooser= new JFileChooser();
 		
 		Level3 = new JButton("3");
 		Level3.setSize(180,180);
-		Level3.setLocation(470,50);
+		Level3.setLocation(470,80);
 		Level3.setForeground(Color.BLACK.darker());
 		Level3.setFont(new Font("Arial",5,55));
 		Level3.setFocusable(false);
@@ -67,7 +67,7 @@ JFileChooser chooser= new JFileChooser();
 		
 		Level4 = new JButton("4");
 		Level4.setSize(180,180);
-		Level4.setLocation(670,50);
+		Level4.setLocation(670,80);
 		Level4.setForeground(Color.BLACK.darker());
 		Level4.setFont(new Font("Arial",5,55));
 		Level4.setFocusable(false);
@@ -78,7 +78,7 @@ JFileChooser chooser= new JFileChooser();
 		
 		Level5 = new JButton("5");
 		Level5.setSize(180,180);
-		Level5.setLocation(870,50);
+		Level5.setLocation(870,80);
 		Level5.setForeground(Color.BLACK.darker());
 		Level5.setFont(new Font("Arial",5,55));
 		Level5.setFocusable(false);
@@ -89,7 +89,7 @@ JFileChooser chooser= new JFileChooser();
 		
 		Level6 = new JButton("6");
 		Level6.setSize(180,180);
-		Level6.setLocation(70,300);
+		Level6.setLocation(70,330);
 		Level6.setForeground(Color.BLACK.darker());
 		Level6.setFont(new Font("Arial",5,55));
 		Level6.setFocusable(false);
@@ -100,7 +100,7 @@ JFileChooser chooser= new JFileChooser();
 		
 		Level7 = new JButton("7");
 		Level7.setSize(180,180);
-		Level7.setLocation(270,300);
+		Level7.setLocation(270,330);
 		Level7.setForeground(Color.BLACK.darker());
 		Level7.setFont(new Font("Arial",5,55));
 		Level7.setFocusable(false);
@@ -111,7 +111,7 @@ JFileChooser chooser= new JFileChooser();
 		
 		Level8 = new JButton("8");
 		Level8.setSize(180,180);
-		Level8.setLocation(470,300);
+		Level8.setLocation(470,330);
 		Level8.setForeground(Color.BLACK.darker());
 		Level8.setFont(new Font("Arial",5,55));
 		Level8.setFocusable(false);
@@ -122,7 +122,7 @@ JFileChooser chooser= new JFileChooser();
 		
 		Level9 = new JButton("9");
 		Level9.setSize(180,180);
-		Level9.setLocation(670,300);
+		Level9.setLocation(670,330);
 		Level9.setForeground(Color.BLACK.darker());
 		Level9.setFont(new Font("Arial",5,55));
 		Level9.setFocusable(false);
@@ -133,7 +133,7 @@ JFileChooser chooser= new JFileChooser();
 		
 		Level10 = new JButton("10");
 		Level10.setSize(180,180);
-		Level10.setLocation(870,300);
+		Level10.setLocation(870,330);
 		Level10.setForeground(Color.BLACK.darker());
 		Level10.setFont(new Font("Arial",5,55));
 		Level10.setFocusable(false);
@@ -150,7 +150,8 @@ JFileChooser chooser= new JFileChooser();
 			System.out.println("clicked on 2");
 		}
 		if(e.getSource()==Level1) {
-			System.out.println("clicked on 1");
+			profile.setVisible(false);
+			 new StartGame();
 		}
 	}
 }
