@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
-public class StartGame extends JFrame implements ActionListener, MouseListener, KeyListener{
+public class StartGame extends JFrame implements ActionListener, KeyListener{
 	private static final long serialVersionUID = 1L;
 
 JFrame gameFrame = new JFrame();
@@ -35,7 +35,6 @@ public Random rand;
 		//gameFrame.add(renderer);
 		gameFrame.setTitle("Speed Typing Alpha");
 		gameFrame.setSize(WIDTH, HEIGHT);
-		gameFrame.addMouseListener(this);
 		gameFrame.addKeyListener(this);
 		gameFrame.setResizable(false);
 		gameFrame.setVisible(true);
@@ -90,30 +89,6 @@ public Random rand;
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
-	}
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	}	
+	
 }
