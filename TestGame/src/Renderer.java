@@ -13,7 +13,7 @@ public class Renderer extends JPanel
 	{
 		super.paintComponent(g);
 
-		FlappyBird.flappyBird.repaint(g);
+		StartGame.Startgame.repaint(g);
 	}
 	
 }
