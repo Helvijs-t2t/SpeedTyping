@@ -3,7 +3,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -14,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 
-public class userProfile extends JFrame implements ActionListener{
+public class userProfile extends JFrame implements ActionListener,KeyListener{
 JFrame profile = new JFrame();
 
 JFileChooser chooser= new JFileChooser();
@@ -25,6 +28,8 @@ JFileChooser chooser= new JFileChooser();
 		Border border = BorderFactory.createDashedBorder(Color.green,12, 1,1,true);
 		Border border1 = BorderFactory.createDashedBorder(Color.red,12, 1,1,true);
 		JLabel profileBG=new JLabel(new ImageIcon("Launcher_BG\\profile_BG.jpg"));
+		
+		profile.addKeyListener(this);
 		
 		profile.setSize(1180, 800);
 		profile.setLocationRelativeTo(null);
@@ -153,5 +158,26 @@ JFileChooser chooser= new JFileChooser();
 			profile.setVisible(false);
 			 new StartGame();
 		}
+	}
+	@Override
+	public void keyPressed(KeyEvent ke) {
+		
+		if(ke.getKeyCode()== KeyEvent.VK_ESCAPE ) {
+			profile.setVisible(false);
+			try {
+				new startUp();
+			} catch (IOException e) {
+			}
+		}
+	}
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		
+		
 	}
 }
