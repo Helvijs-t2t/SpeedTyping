@@ -19,14 +19,13 @@ import javax.swing.border.Border;
 
 public class userProfile extends JFrame implements ActionListener,KeyListener{
 JFrame profile = new JFrame();
-
-JFileChooser chooser= new JFileChooser();
-
+public static int levelspassed = 1;
+Border border = BorderFactory.createDashedBorder(Color.green,12, 1,1,true);
+Border border1 = BorderFactory.createDashedBorder(Color.red,12, 1,1,true);
 	Font btnFont = new Font("Arial",5,55);
 	JButton Level1, Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10;
 	public userProfile() {
-		Border border = BorderFactory.createDashedBorder(Color.green,12, 1,1,true);
-		Border border1 = BorderFactory.createDashedBorder(Color.red,12, 1,1,true);
+		
 		JLabel profileBG=new JLabel(new ImageIcon("Launcher_BG\\profile_BG.jpg"));
 		
 		profile.addKeyListener(this);
@@ -146,18 +145,122 @@ JFileChooser chooser= new JFileChooser();
 		Level10.setContentAreaFilled(false);
 		Level10.addActionListener(this);
 		profileBG.add(Level10);
-		
+		checklevels();
 		profile.setVisible(true);
+	}
+	
+	public void checklevels() {
+		if(levelspassed==1) {
+			Level1.setBorder(border);
+		}
+		if(levelspassed==2) {
+			Level2.setBorder(border);
+		}
+		if(levelspassed==3) {
+			Level2.setBorder(border);
+			Level3.setBorder(border);
+		}
+		if(levelspassed==4) {
+			Level3.setBorder(border);
+			Level2.setBorder(border);
+			Level4.setBorder(border);
+		}
+		if(levelspassed==5) {
+			Level3.setBorder(border);
+			Level2.setBorder(border);
+			Level4.setBorder(border);
+			Level5.setBorder(border);
+		}
+		if(levelspassed==6) {
+			Level2.setBorder(border);
+			Level3.setBorder(border);
+			Level4.setBorder(border);
+			Level5.setBorder(border);
+			Level6.setBorder(border);
+		}
+		if(levelspassed==7) {
+			Level2.setBorder(border);
+			Level3.setBorder(border);
+			Level4.setBorder(border);
+			Level5.setBorder(border);
+			Level6.setBorder(border);
+			Level7.setBorder(border);
+		}
+		if(levelspassed==8) {
+			Level2.setBorder(border);
+			Level3.setBorder(border);
+			Level4.setBorder(border);
+			Level5.setBorder(border);
+			Level6.setBorder(border);
+			Level7.setBorder(border);
+			Level8.setBorder(border);
+		}
+		if(levelspassed==9) {
+			Level2.setBorder(border);
+			Level3.setBorder(border);
+			Level4.setBorder(border);
+			Level5.setBorder(border);
+			Level6.setBorder(border);
+			Level7.setBorder(border);
+			Level8.setBorder(border);
+			Level9.setBorder(border);
+		}
+		if(levelspassed==10) {
+			Level2.setBorder(border);
+			Level3.setBorder(border);
+			Level4.setBorder(border);
+			Level5.setBorder(border);
+			Level6.setBorder(border);
+			Level7.setBorder(border);
+			Level8.setBorder(border);
+			Level9.setBorder(border);
+			Level10.setBorder(border);
+		}
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==Level2) {
-			System.out.println("clicked on 2");
+			profile.setVisible(false);
+			 new level2();
 		}
 		if(e.getSource()==Level1) {
 			profile.setVisible(false);
 			 new StartGame();
 		}
+		
+		if(e.getSource()==Level3) {
+			profile.setVisible(false);
+			 new level3();
+		}
+		if(e.getSource()==Level4) {
+			profile.setVisible(false);
+			 new level4();
+		}
+		if(e.getSource()==Level5) {
+			profile.setVisible(false);
+			 new level5();
+		}
+		if(e.getSource()==Level6) {
+			profile.setVisible(false);
+			 new level6();
+		}
+		if(e.getSource()==Level7) {
+			profile.setVisible(false);
+			 new level7();
+		}
+		if(e.getSource()==Level8) {
+			profile.setVisible(false);
+			 new level8();
+		}
+		if(e.getSource()==Level9) {
+			profile.setVisible(false);
+			 new level9();
+		}
+		if(e.getSource()==Level10) {
+			profile.setVisible(false);
+			 new level10();
+		}
+
 	}
 	@Override
 	public void keyPressed(KeyEvent ke) {

@@ -144,7 +144,7 @@ public JButton btnBack;
 		btnBack.setLocation(470,400);
 		btnBack.setOpaque(false);
 		btnBack.setForeground(Color.RED.darker());
-		btnBack.setFont(new Font("Arial",3,30));
+		btnBack.setFont(new Font("Arial",3,35));
 		btnBack.setContentAreaFilled(false);
 		btnBack.addActionListener(this);
 		btnBack.setVisible(false);
@@ -231,6 +231,7 @@ public JButton btnBack;
 		}
 	}
 	public void goback() {
+		userProfile.levelspassed++;
 		gameFrame.setVisible(false);
 		new userProfile();
 	}
