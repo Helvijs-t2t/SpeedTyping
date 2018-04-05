@@ -41,8 +41,7 @@ public class Options extends JFrame implements ActionListener,KeyListener, ItemL
 		} catch (IOException e) {
 		}
 
-		JLabel background = new JLabel(
-				new ImageIcon("Launcher_BG\\Launcher_BG.jpg"));
+		JLabel background = new JLabel(new ImageIcon(getClass().getResource("Launcher_BG.jpg")));
 
 		options.setSize(820, 600);
 		options.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

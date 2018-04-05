@@ -1,11 +1,17 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GraphicsConfiguration;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,21 +28,19 @@ public class startUp extends JFrame implements ActionListener {
 	Font labelFont = (new Font("arial", 5, 25));
 	Font ButtonFont = (new Font("arial", 15, 35));
 	Font welcomeFont = (new Font("arial", 5, 65));
-	JButton start,options,quit;
+	JButton start,options,quit,h;
 	JLabel user, welcome, password, message;
 	JTextField userID, userPW;
-	public static int Dificulty = 0;
+	public static int Dificulty = 1;
 	
 	public static void main(String[] args) throws IOException {
 		new startUp();
 
 	}
-
+//(getClass().getResource(pathToImage))
 	public startUp() throws IOException {
 		Border border = BorderFactory.createDashedBorder(Color.YELLOW,12, 22,3,false);
-
-		JLabel background = new JLabel(
-				new ImageIcon("Launcher_BG\\Launcher_BG.jpg"));
+		JLabel background = new JLabel(new ImageIcon(getClass().getResource("Launcher_BG.jpg")));
 
 		Launcher.setSize(820, 600);
 		Launcher.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -44,7 +48,8 @@ public class startUp extends JFrame implements ActionListener {
 		Launcher.setLocationRelativeTo(null);
 		Launcher.setResizable(false);
 		Launcher.setLayout(new BorderLayout());
-		Launcher.add(background);
+		Launcher.setContentPane(background);
+		//Launcher.add(background);
 		
 
 		
@@ -55,7 +60,7 @@ public class startUp extends JFrame implements ActionListener {
 		password.setFont(labelFont);
 		password.setBorder(border);
 		password.setForeground(Color.white);
-		background.add(password);
+		Launcher.add(password);
 
 		
 
@@ -64,7 +69,7 @@ public class startUp extends JFrame implements ActionListener {
 		welcome.setLocation(150, 5);
 		welcome.setFont(welcomeFont);
 		welcome.setForeground(Color.green.brighter());
-		background.add(welcome);
+		Launcher.add(welcome);
 
 		start = new JButton("Start");
 		start.setSize(200, 40);
@@ -75,7 +80,7 @@ public class startUp extends JFrame implements ActionListener {
 		start.addActionListener(this);
 		start.setFocusPainted(false);
 		start.setForeground(Color.WHITE.brighter());
-		background.add(start);
+		Launcher.add(start);
 		
 		options = new JButton("Options");
 		options.setSize(200, 40);
@@ -86,7 +91,7 @@ public class startUp extends JFrame implements ActionListener {
 		options.addActionListener(this);
 		options.setFocusPainted(false);
 		options.setForeground(Color.WHITE.brighter());
-		background.add(options);
+		Launcher.add(options);
 		
 		quit = new JButton("Quit");
 		quit.setSize(200, 40);
@@ -97,7 +102,19 @@ public class startUp extends JFrame implements ActionListener {
 		quit.addActionListener(this);
 		quit.setFocusPainted(false);
 		quit.setForeground(Color.WHITE.brighter());
-		background.add(quit);
+		Launcher.add(quit);
+		
+		h = new JButton("");
+		h.setSize(200, 40);
+		h.setLocation(300, 350);
+		h.setOpaque(false);
+		h.setContentAreaFilled(false);
+		h.setFont(ButtonFont);
+		h.addActionListener(this);
+		h.setEnabled(false);
+		h.setFocusPainted(false);
+		h.setForeground(Color.WHITE.brighter());
+		Launcher.add(h);
 		
 		Launcher.setVisible(true);
 	}

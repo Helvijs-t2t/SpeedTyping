@@ -26,7 +26,7 @@ Border border1 = BorderFactory.createDashedBorder(Color.red,12, 1,1,true);
 	static JButton Level1,Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10;
 	public levelCheck() {
 		
-		JLabel profileBG=new JLabel(new ImageIcon("Launcher_BG\\profile_BG.jpg"));
+		JLabel profileBG=new JLabel(new ImageIcon(getClass().getResource("profile_BG.jpg")));
 		
 		profile.addKeyListener(this);
 		

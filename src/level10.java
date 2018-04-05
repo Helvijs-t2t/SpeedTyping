@@ -17,10 +17,10 @@ public class level10 implements KeyListener,ActionListener{
 	public final int WIDTH = 1200, HEIGHT = 800;
 	public String displayString ="";
 	public JLabel displayLabel, l1,l2,l3,l4,l5,l6,l7,l8,l9,l0;
-	public JLabel character = new JLabel(new ImageIcon("Launcher_BG\\rsz_stman.png"));
+	public JLabel character = new JLabel(new ImageIcon(getClass().getResource("rsz_stman.png")));
 	public int keyspressed = 0;
 	public int spresseed = 0;
-	JLabel backgroundPic = new JLabel(new ImageIcon("Launcher_BG\\lvl1.png"));
+	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
 	public JButton btnBack;
 	
 	
