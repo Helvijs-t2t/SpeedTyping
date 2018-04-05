@@ -1,11 +1,15 @@
 import java.awt.BorderLayout;
+import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -13,29 +17,36 @@ import java.io.UnsupportedEncodingException;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 
-public class Options extends JFrame implements ActionListener,KeyListener {
+public class Options extends JFrame implements ActionListener,KeyListener, ItemListener {
 	private static final long serialVersionUID = 1L;
 
 	
 	JFrame options = new JFrame();
-	Font labelFont = (new Font("arial", 5, 25));
+	Font labelFont = (new Font("arial", 5, 35));
+	Font ChoiceFont = (new Font("arial", 5, 20));
 	Font ButtonFont = (new Font("arial", 15, 35));
 	Font welcomeFont = (new Font("arial", 5, 65));
 	JButton back,save;
-	JLabel user, welcome, password, message;
+	Choice difficultyc;
+	JLabel Dificulty, limitedMistakes, textArea1;
 	JTextField userID, userPW;
-	
-	
+	public FileWriter file; 
+	public PrintWriter writer1= new PrintWriter("config.cfg", "UTF-8");
+	 
 	public Options() throws FileNotFoundException, UnsupportedEncodingException {
-		PrintWriter writer1= new PrintWriter("game.log", "UTF-8");
-		
-		Border border = BorderFactory.createDashedBorder(Color.YELLOW,12, 22,3,false);
+		try {
+		 file = new FileWriter("config.txt",true);
+		} catch (IOException e) {
+		}
 
 		JLabel background = new JLabel(
 				new ImageIcon("Launcher_BG\\Launcher_BG.jpg"));
@@ -49,6 +60,36 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 		options.addKeyListener(this);
 		options.setLayout(new BorderLayout());
 		options.add(background);
+		
+		textArea1 = new JLabel("",SwingConstants.CENTER);
+		textArea1.setLocation(400,20);
+		textArea1.setSize(400,400);
+		textArea1.setFont(labelFont);
+		textArea1.setVerticalAlignment(JLabel.TOP);
+		textArea1.setHorizontalAlignment(JLabel.RIGHT);
+		textArea1.setForeground(Color.CYAN.darker());
+		textArea1.setText("<html>Beginner dificulty - you will have unlimited time and unlimited mistakes for all levels.</html>");
+		background.add(textArea1);
+		
+		difficultyc = new Choice();
+		difficultyc.add("Beginner");
+		difficultyc.add("Advanced");
+		difficultyc.add("Expert");
+		difficultyc.setSize(150,30);
+		difficultyc.setLocation(200,47);
+		difficultyc.setFocusable(false);
+		difficultyc.addItemListener(this);
+		difficultyc.setFont(ChoiceFont);
+		difficultyc.select("Beginner");
+		background.add(difficultyc);
+		
+		Dificulty = new JLabel("Difficulty");
+		Dificulty.setSize(150,40);
+		Dificulty.setLocation(40,40);
+		Dificulty.setForeground(Color.YELLOW.darker());
+		Dificulty.setFont(labelFont);
+		background.add(Dificulty);
+		
 		
 		save = new JButton("Save");
 		save.setSize(200,40);
@@ -75,13 +116,21 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 		background.add(back);
 		
 		options.setVisible(true);
-		
 	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent ev) {
 		if (ev.getSource()==back) {
+			goback();
+		}
+		
+		if (ev.getSource()==save) {
+			try {
+				savechanges();
+			} catch (IOException e) {
+
+			}
 			goback();
 		}
 		
@@ -111,6 +160,33 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 		} catch (IOException e) {}
 		
 		options.setVisible(false);
+		
+	}
+
+	public void savechanges() throws IOException {
+		file.write("\n"+startUp.Dificulty);
+		file.write("\n"+startUp.Dificulty);
+		file.flush();
+		file.close();
+	}
+
+
+	@Override
+	public void itemStateChanged(ItemEvent ItemEvent) {
+		if(ItemEvent.getItem()=="Advanced") {
+			textArea1.setText("<html>Advanced Difficulty - You will have to finish game with less than 3 mistakes in each level."
+					+ " Every level finished will give you back one life if you have less than three of them.</html>");
+			startUp.Dificulty = 2;
+		}
+		if(ItemEvent.getItem()=="Beginner") {
+			textArea1.setText("<html>Beginner difficulty - you will have unlimited time and unlimited mistakes for all levels.</html>");
+			startUp.Dificulty = 1;
+		}
+		if(ItemEvent.getItem()=="Expert") {
+			textArea1.setText("<html>Experts have only one life thorough the whole game and limited time for each level.</html>");
+			startUp.Dificulty = 3;
+		}
+		
 		
 	}
 }

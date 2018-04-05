@@ -29,7 +29,7 @@ public class startUp extends JFrame implements ActionListener {
 	JButton start,options,quit;
 	JLabel user, welcome, password, message;
 	JTextField userID, userPW;
-	JCheckBox saveMe;
+	public static int Dificulty = 0;
 	
 	public static void main(String[] args) throws IOException {
 		new startUp();
@@ -117,12 +117,10 @@ public class startUp extends JFrame implements ActionListener {
 		}
 		
 		if (e.getSource()== options) {
-			System.out.println("options");
 			 try {
 				 Launcher.setVisible(false);
 				new Options();
 			} catch (FileNotFoundException | UnsupportedEncodingException e1) {
-				System.out.println("file not found");
 			}
 		}
 	}
