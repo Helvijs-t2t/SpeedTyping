@@ -13,7 +13,6 @@ import javax.swing.WindowConstants;
 
 public class level6 implements KeyListener,ActionListener{
 	JFrame gameFrame = new JFrame();
-	public static StartGame Startgame;
 	public final int WIDTH = 1200, HEIGHT = 800;
 	public String displayString ="";
 	public JLabel displayLabel, l1,l2,l3,l4,l5,l6,l7,l8,l9,l0;
@@ -213,7 +212,7 @@ public void goback() {
 	VarCheck.disableCount++;
 	}
 	gameFrame.setVisible(false);
-	new level1();
+	new levelCheck();
 }
 @Override
 public void keyReleased(KeyEvent arg0) {

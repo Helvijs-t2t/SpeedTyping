@@ -1,5 +1,4 @@
 import java.awt.Color;
-
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
@@ -16,70 +15,70 @@ public class VarCheck {
 	
 	public static void checklevels() {
 		if(levelspassed==0) {
-			level1.Level1.setBorder(border);
+			levelCheck.Level1.setBorder(border);
 		}
 		if(levelspassed==1) {
-			level1.Level2.setBorder(border);
+			levelCheck.Level2.setBorder(border);
 		}
 		if(levelspassed==2) {
-			level1.Level2.setBorder(border);
-			level1.Level3.setBorder(border);
+			levelCheck.Level2.setBorder(border);
+			levelCheck.Level3.setBorder(border);
 		}
 		if(levelspassed==3) {
-			level1.Level3.setBorder(border);
-			level1.Level2.setBorder(border);
-			level1.Level4.setBorder(border);
+			levelCheck.Level3.setBorder(border);
+			levelCheck.Level2.setBorder(border);
+			levelCheck.Level4.setBorder(border);
 		}
 		if(levelspassed==4) {
-			level1.Level3.setBorder(border);
-			level1.Level2.setBorder(border);
-			level1.Level4.setBorder(border);
-			level1.Level5.setBorder(border);
+			levelCheck.Level3.setBorder(border);
+			levelCheck.Level2.setBorder(border);
+			levelCheck.Level4.setBorder(border);
+			levelCheck.Level5.setBorder(border);
 		}
 		if(levelspassed==5) {
-			level1.Level2.setBorder(border);
-			level1.Level3.setBorder(border);
-			level1.Level4.setBorder(border);
-			level1.Level5.setBorder(border);
-			level1.Level6.setBorder(border);
+			levelCheck.Level2.setBorder(border);
+			levelCheck.Level3.setBorder(border);
+			levelCheck.Level4.setBorder(border);
+			levelCheck.Level5.setBorder(border);
+			levelCheck.Level6.setBorder(border);
 		}
 		if(levelspassed==6) {
-			level1.Level2.setBorder(border);
-			level1.Level3.setBorder(border);
-			level1.Level4.setBorder(border);
-			level1.Level5.setBorder(border);
-			level1.Level6.setBorder(border);
-			level1.Level7.setBorder(border);
+			levelCheck.Level2.setBorder(border);
+			levelCheck.Level3.setBorder(border);
+			levelCheck.Level4.setBorder(border);
+			levelCheck.Level5.setBorder(border);
+			levelCheck.Level6.setBorder(border);
+			levelCheck.Level7.setBorder(border);
 		}
 		if(levelspassed==7) {
-			level1.Level2.setBorder(border);
-			level1.Level3.setBorder(border);
-			level1.Level4.setBorder(border);
-			level1.Level5.setBorder(border);
-			level1.Level6.setBorder(border);
-			level1.Level7.setBorder(border);
-			level1.Level8.setBorder(border);
+			levelCheck.Level2.setBorder(border);
+			levelCheck.Level3.setBorder(border);
+			levelCheck.Level4.setBorder(border);
+			levelCheck.Level5.setBorder(border);
+			levelCheck.Level6.setBorder(border);
+			levelCheck.Level7.setBorder(border);
+			levelCheck.Level8.setBorder(border);
 		}
 		if(levelspassed==8) {
-			level1.Level2.setBorder(border);
-			level1.Level3.setBorder(border);
-			level1.Level4.setBorder(border);
-			level1.Level5.setBorder(border);
-			level1.Level6.setBorder(border);
-			level1.Level7.setBorder(border);
-			level1.Level8.setBorder(border);
-			level1.Level9.setBorder(border);
+			levelCheck.Level2.setBorder(border);
+			levelCheck.Level3.setBorder(border);
+			levelCheck.Level4.setBorder(border);
+			levelCheck.Level5.setBorder(border);
+			levelCheck.Level6.setBorder(border);
+			levelCheck.Level7.setBorder(border);
+			levelCheck.Level8.setBorder(border);
+			levelCheck.Level9.setBorder(border);
 		}
 		if(levelspassed>=9) {
-			level1.Level2.setBorder(border);
-			level1.Level3.setBorder(border);
-			level1.Level4.setBorder(border);
-			level1.Level5.setBorder(border);
-			level1.Level6.setBorder(border);
-			level1.Level7.setBorder(border);
-			level1.Level8.setBorder(border);
-			level1.Level9.setBorder(border);
-			level1.Level10.setBorder(border);
+			levelCheck.Level2.setBorder(border);
+			levelCheck.Level3.setBorder(border);
+			levelCheck.Level4.setBorder(border);
+			levelCheck.Level5.setBorder(border);
+			levelCheck.Level6.setBorder(border);
+			levelCheck.Level7.setBorder(border);
+			levelCheck.Level8.setBorder(border);
+			levelCheck.Level9.setBorder(border);
+			levelCheck.Level10.setBorder(border);
 		}
 	}
 }

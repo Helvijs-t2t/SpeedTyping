@@ -11,20 +11,14 @@ import java.awt.event.KeyListener;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-import javax.swing.border.Border;
 
 public class Options extends JFrame implements ActionListener,KeyListener, ItemListener {
 	private static final long serialVersionUID = 1L;
@@ -40,11 +34,10 @@ public class Options extends JFrame implements ActionListener,KeyListener, ItemL
 	JLabel Dificulty, limitedMistakes, textArea1;
 	JTextField userID, userPW;
 	public FileWriter file; 
-	public PrintWriter writer1= new PrintWriter("config.cfg", "UTF-8");
 	 
 	public Options() throws FileNotFoundException, UnsupportedEncodingException {
 		try {
-		 file = new FileWriter("config.txt",true);
+		 file = new FileWriter("config.txt",false);
 		} catch (IOException e) {
 		}
 
@@ -164,8 +157,7 @@ public class Options extends JFrame implements ActionListener,KeyListener, ItemL
 	}
 
 	public void savechanges() throws IOException {
-		file.write("\n"+startUp.Dificulty);
-		file.write("\n"+startUp.Dificulty);
+		file.write("Difficulty level: "+startUp.Dificulty);
 		file.flush();
 		file.close();
 	}

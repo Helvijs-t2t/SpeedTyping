@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,7 +13,7 @@ import javax.swing.WindowConstants;
 
 public class level9 implements KeyListener,ActionListener{
 	JFrame gameFrame = new JFrame();
-	public static StartGame Startgame;
+
 	public final int WIDTH = 1200, HEIGHT = 800;
 	public String displayString ="";
 	public JLabel displayLabel, l1,l2,l3,l4,l5,l6,l7,l8,l9,l0;
@@ -215,7 +214,7 @@ public void goback() {
 	VarCheck.disableCount++;
 	}
 	gameFrame.setVisible(false);
-	new level1();
+	new levelCheck();
 }
 @Override
 public void keyReleased(KeyEvent arg0) {

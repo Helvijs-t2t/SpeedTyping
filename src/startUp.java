@@ -5,13 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -21,7 +18,6 @@ import javax.swing.border.Border;
 public class startUp extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1;
 	
-	PrintWriter writer= new PrintWriter("config.cfg", "UTF-8");
 	JFrame Launcher = new JFrame();
 	Font labelFont = (new Font("arial", 5, 25));
 	Font ButtonFont = (new Font("arial", 15, 35));
@@ -110,7 +106,7 @@ public class startUp extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()== start) {
 					Launcher.setVisible(false);
-						new level1();
+						new levelCheck();
 		}
 		if (e.getSource()== quit) {
 			System.exit(0);

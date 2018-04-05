@@ -1,3 +1,4 @@
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -5,216 +6,234 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
-import javax.swing.BorderFactory;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
-import javax.swing.border.Border;
-
-public class level1 extends JFrame implements ActionListener,KeyListener{
-
+public class level1 extends JFrame implements ActionListener, KeyListener{
 	private static final long serialVersionUID = 1L;
 
-JFrame profile = new JFrame();
-Border border = BorderFactory.createDashedBorder(Color.green,12, 1,1,true);
-Border border1 = BorderFactory.createDashedBorder(Color.red,12, 1,1,true);
-
-	Font btnFont = new Font("Arial",5,55);
-	static JButton Level1,Level2,Level3,Level4,Level5,Level6,Level7,Level8,Level9,Level10;
+JFrame gameFrame = new JFrame();
+public static level1 Startgame;
+public final int WIDTH = 1200, HEIGHT = 800;
+public String displayString ="";
+public JLabel displayLabel, l1,l2,l3,l4,l5,l6,l7,l8,l9,l0;
+public JLabel character = new JLabel(new ImageIcon("Launcher_BG\\rsz_stman.png"));
+public int keyspressed = 0;
+public int spresseed = 0;
+JLabel backgroundPic = new JLabel(new ImageIcon("Launcher_BG\\lvl1.png"));
+public JButton btnBack;
 	public level1() {
+		char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+		String [] newList = new String[11];
+		Random r = new Random(alphabet.length);
 		
-		JLabel profileBG=new JLabel(new ImageIcon("Launcher_BG\\profile_BG.jpg"));
+		for(int i=0;i<10;i++) {
+			
+			int x = r.nextInt(26) + 1;
+			newList[i] = alphabet[x]+"";
+			displayString=displayString+"  "+alphabet[x];
+		}
 		
-		profile.addKeyListener(this);
+		gameFrame.setTitle("Speed Typing Alpha");
+		gameFrame.setSize(WIDTH, HEIGHT);
+		gameFrame.addKeyListener(this);
+		gameFrame.setResizable(false);
+		gameFrame.setVisible(true);
+		gameFrame.setLayout(new BorderLayout());
+		gameFrame.setLocationRelativeTo(null);
+		gameFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		gameFrame.add(backgroundPic);
 		
-		profile.setSize(1180, 800);
-		profile.setLocationRelativeTo(null);
-		profile.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		profile.setLayout(new BorderLayout());
-		profile.add(profileBG);
 		
-		Level1 = new JButton("1");
-		Level1.setSize(180,180);
-		Level1.setLocation(70,80);
-		Level1.setForeground(Color.BLACK.darker());
-		Level1.setFont(new Font("Arial",5,55));
-		Level1.setFocusable(false);
-		Level1.setBorder(border);
-		Level1.setContentAreaFilled(false);
-		Level1.addActionListener(this);
-		profileBG.add(Level1);
+		character.setSize(100,100);
+		character.setLocation(150,550);
+		backgroundPic.add(character);
 		
-		Level2 = new JButton("2");
-		Level2.setSize(180,180);
-		Level2.setLocation(270,80);
-		Level2.setForeground(Color.BLACK.darker());
-		Level2.setBorder(border1);
-		Level2.setFocusable(false);
-		Level2.setContentAreaFilled(false);
-		Level2.setFont(new Font("Arial",5,55));
-		Level2.addActionListener(this);
-		profileBG.add(Level2);
+		l1 = new JLabel(newList[0]+"");
+		l1.setSize(30,40);
+		l1.setLocation(150,100);
+		l1.setFont(new Font("Arial Black",3,35));
+		l1.setForeground(Color.BLACK.darker());
+		backgroundPic.add(l1);
 		
-		Level3 = new JButton("3");
-		Level3.setSize(180,180);
-		Level3.setLocation(470,80);
-		Level3.setForeground(Color.BLACK.darker());
-		Level3.setFont(new Font("Arial",5,55));
-		Level3.setFocusable(false);
-		Level3.setBorder(border1);
-		Level3.setContentAreaFilled(false);
-		Level3.addActionListener(this);
-		profileBG.add(Level3);
+		l2 = new JLabel(newList[1]+"");
+		l2.setSize(30,40);
+		l2.setLocation(250,100);
+		l2.setFont(new Font("Arial Black",3,35));
+		l2.setForeground(Color.BLACK.darker());
+		backgroundPic.add(l2);
 		
-		Level4 = new JButton("4");
-		Level4.setSize(180,180);
-		Level4.setLocation(670,80);
-		Level4.setForeground(Color.BLACK.darker());
-		Level4.setFont(new Font("Arial",5,55));
-		Level4.setFocusable(false);
-		Level4.setBorder(border1);
-		Level4.setContentAreaFilled(false);
-		Level4.addActionListener(this);
-		profileBG.add(Level4);
+		l3 = new JLabel(newList[2]+"");
+		l3.setSize(30,40);
+		l3.setLocation(350,100);
+		l3.setFont(new Font("Arial Black",3,35));
+		l3.setForeground(Color.BLACK.darker());
+		backgroundPic.add(l3);
 		
-		Level5 = new JButton("5");
-		Level5.setSize(180,180);
-		Level5.setLocation(870,80);
-		Level5.setForeground(Color.BLACK.darker());
-		Level5.setFont(new Font("Arial",5,55));
-		Level5.setFocusable(false);
-		Level5.setBorder(border1);
-		Level5.setContentAreaFilled(false);
-		Level5.addActionListener(this);
-		profileBG.add(Level5);
+		l4 = new JLabel("l");
+		l4.setSize(30,40);
+		l4.setLocation(450,100);
+		l4.setFont(new Font("Arial Black",3,35));
+		l4.setForeground(Color.BLACK.darker());
+		backgroundPic.add(l4);
 		
-		Level6 = new JButton("6");
-		Level6.setSize(180,180);
-		Level6.setLocation(70,330);
-		Level6.setForeground(Color.BLACK.darker());
-		Level6.setFont(new Font("Arial",5,55));
-		Level6.setFocusable(false);
-		Level6.setBorder(border1);
-		Level6.setContentAreaFilled(false);
-		Level6.addActionListener(this);
-		profileBG.add(Level6);
+		l5 = new JLabel(newList[4]+"");
+		l5.setSize(30,40);
+		l5.setLocation(550,100);
+		l5.setFont(new Font("Arial Black",3,35));
+		l5.setForeground(Color.BLACK.darker());
+		backgroundPic.add(l5);
 		
-		Level7 = new JButton("7");
-		Level7.setSize(180,180);
-		Level7.setLocation(270,330);
-		Level7.setForeground(Color.BLACK.darker());
-		Level7.setFont(new Font("Arial",5,55));
-		Level7.setFocusable(false);
-		Level7.setBorder(border1);
-		Level7.setContentAreaFilled(false);
-		Level7.addActionListener(this);
-		profileBG.add(Level7);
+		l6 = new JLabel(newList[5]+"");
+		l6.setSize(30,40);
+		l6.setLocation(650,100);
+		l6.setFont(new Font("Arial Black",3,35));
+		l6.setForeground(Color.BLACK.darker());
+		backgroundPic.add(l6);
 		
-		Level8 = new JButton("8");
-		Level8.setSize(180,180);
-		Level8.setLocation(470,330);
-		Level8.setForeground(Color.BLACK.darker());
-		Level8.setFont(new Font("Arial",5,55));
-		Level8.setFocusable(false);
-		Level8.setBorder(border1);
-		Level8.setContentAreaFilled(false);
-		Level8.addActionListener(this);
-		profileBG.add(Level8);
+		l7 = new JLabel(newList[6]+"");
+		l7.setSize(30,40);
+		l7.setLocation(750,100);
+		l7.setFont(new Font("Arial Black",3,35));
+		l7.setForeground(Color.BLACK.darker());
+		backgroundPic.add(l7);
 		
-		Level9 = new JButton("9");
-		Level9.setSize(180,180);
-		Level9.setLocation(670,330);
-		Level9.setForeground(Color.BLACK.darker());
-		Level9.setFont(new Font("Arial",5,55));
-		Level9.setFocusable(false);
-		Level9.setBorder(border1);
-		Level9.setContentAreaFilled(false);
-		Level9.addActionListener(this);
-		profileBG.add(Level9);
+		l8 = new JLabel(newList[7]+"");
+		l8.setSize(30,40);
+		l8.setLocation(850,100);
+		l8.setFont(new Font("Arial Black",3,35));
+		l8.setForeground(Color.BLACK.darker());
+		backgroundPic.add(l8);
 		
-		Level10 = new JButton("10");
-		Level10.setSize(180,180);
-		Level10.setLocation(870,330);
-		Level10.setForeground(Color.BLACK.darker());
-		Level10.setFont(new Font("Arial",5,55));
-		Level10.setFocusable(false);
-		Level10.setBorder(border1);
-		Level10.setContentAreaFilled(false);
-		Level10.addActionListener(this);
-		profileBG.add(Level10);
+		l9 = new JLabel(newList[8]+"");
+		l9.setSize(30,40);
+		l9.setLocation(950,100);
+		l9.setFont(new Font("Arial Black",3,35));
+		l9.setForeground(Color.BLACK.darker());
+		backgroundPic.add(l9);
 		
-		VarCheck.checklevels();
-		profile.setVisible(true);
+		l0 = new JLabel(newList[9]+"");
+		l0.setSize(30,40);
+		l0.setLocation(1050,100);
+		l0.setFont(new Font("Arial Black",3,35));
+		l0.setForeground(Color.BLACK.darker());
+		backgroundPic.add(l0);
+		
+		displayLabel = new JLabel("");
+		displayLabel.setSize(600,80);
+		displayLabel.setLocation(330,250);
+		displayLabel.setFont(new Font("Arial",3,70));
+		displayLabel.setForeground(Color.RED.darker());
+		backgroundPic.add(displayLabel);
+
+		btnBack = new JButton("Back");
+		btnBack.setSize(200,40);
+		btnBack.setLocation(470,400);
+		btnBack.setOpaque(false);
+		btnBack.setForeground(Color.RED.darker());
+		btnBack.setFont(new Font("Arial",3,35));
+		btnBack.setContentAreaFilled(false);
+		btnBack.addActionListener(this);
+		btnBack.setVisible(false);
+		backgroundPic.add(btnBack);
+		
+		
+		gameFrame.setVisible(true);
+
 	}
 	
-	
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==Level2 && (VarCheck.levelspassed >0)) {
-			profile.setVisible(false);
-			 new level2();
-		}
-		if(e.getSource()==Level1 && (VarCheck.levelspassed >=0)) {
-			profile.setVisible(false);
-			 new StartGame();
+	public void actionPerformed(ActionEvent btn) {
+		if(btn.getSource()==btnBack) {
+			goback();
 		}
 		
-		if(e.getSource()==Level3 && (VarCheck.levelspassed >1)) {
-			profile.setVisible(false);
-			 new level3();
-		}
-		if(e.getSource()==Level4 && (VarCheck.levelspassed >2)) {
-			profile.setVisible(false);
-			 new level4();
-		}
-		if(e.getSource()==Level5 && (VarCheck.levelspassed >3)) {
-			profile.setVisible(false);
-			 new level5();
-		}
-		if(e.getSource()==Level6 && (VarCheck.levelspassed >4)) {
-			profile.setVisible(false);
-			 new level6();
-		}
-		if(e.getSource()==Level7 && (VarCheck.levelspassed >5)) {
-			profile.setVisible(false);
-			 new level7();
-		}
-		if(e.getSource()==Level8 && (VarCheck.levelspassed >6)) {
-			profile.setVisible(false);
-			 new level8();
-		}
-		if(e.getSource()==Level9 && (VarCheck.levelspassed >7)) {
-			profile.setVisible(false);
-			 new level9();
-		}
-		if(e.getSource()==Level10 && (VarCheck.levelspassed >8)) {
-			profile.setVisible(false);
-			 new level10();
-		}
-
 	}
 	@Override
 	public void keyPressed(KeyEvent ke) {
-		
 		if(ke.getKeyCode()== KeyEvent.VK_ESCAPE ) {
-			profile.setVisible(false);
-			try {
-				new startUp();
-			} catch (IOException e) {
-			}
+			goback();
+
 		}
+		
+		if(ke.getKeyCode()== KeyEvent.VK_X && keyspressed==0 ) {
+			character.setLocation(200,550);
+			repaint();
+			keyspressed++;
+		}
+		
+		if(ke.getKeyCode()== KeyEvent.VK_H && keyspressed==1) {
+			character.setLocation(300,550);
+			repaint();
+			keyspressed++;
+		}
+		
+		if(ke.getKeyCode()== KeyEvent.VK_S && keyspressed==2) {
+			character.setLocation(400,550);
+			repaint();
+			keyspressed++;
+			spresseed++;
+		}
+		
+		if(ke.getKeyCode()== KeyEvent.VK_L && keyspressed==3) {
+			character.setLocation(500,550);
+			repaint();
+			keyspressed++;
+		}
+		if(ke.getKeyCode()== KeyEvent.VK_F && keyspressed==4) {
+			character.setLocation(600,550);
+			repaint();
+			keyspressed++;
+		}
+		if(ke.getKeyCode()== KeyEvent.VK_U && keyspressed==5) {
+			character.setLocation(700,550);
+			repaint();
+			keyspressed++;
+		}
+		if(ke.getKeyCode()== KeyEvent.VK_O && keyspressed==6) {
+			character.setLocation(800,550);
+			repaint();
+			keyspressed++;
+		}
+		if(ke.getKeyCode()== KeyEvent.VK_K && keyspressed==7) {
+			character.setLocation(900,550);
+			repaint();
+			keyspressed++;
+		}
+		if(ke.getKeyCode()== KeyEvent.VK_G && keyspressed==8) {
+			character.setLocation(1000,550);
+			repaint();
+			keyspressed++;
+		}
+		if(ke.getKeyCode()== KeyEvent.VK_J && keyspressed==9) {
+			character.setLocation(1100,550);
+			repaint();
+			keyspressed++;
+		}
+		if(keyspressed==10) {
+			character.setVisible(false);
+			displayLabel.setText("Level Complete");
+			btnBack.setVisible(true);
+		}
+	}
+	public void goback() {
+		if(VarCheck.disableCount==0 && keyspressed>9) {
+		VarCheck.levelspassed++;
+		VarCheck.disableCount++;
+		}
+		gameFrame.setVisible(false);
+		new levelCheck();
 	}
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		
 		
 	}
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		
-		
 	}
+	
 }

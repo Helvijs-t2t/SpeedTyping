@@ -1,4 +1,3 @@
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -15,7 +14,6 @@ import javax.swing.WindowConstants;
 
 public class level10 implements KeyListener,ActionListener{
 	JFrame gameFrame = new JFrame();
-	public static StartGame Startgame;
 	public final int WIDTH = 1200, HEIGHT = 800;
 	public String displayString ="";
 	public JLabel displayLabel, l1,l2,l3,l4,l5,l6,l7,l8,l9,l0;
@@ -28,7 +26,6 @@ public class level10 implements KeyListener,ActionListener{
 	
 	public level10() {
 	char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-	int[] numbers = {1,2,3,4,5,6,7,8,9,0};
 	String [] newList = new String[11];
 	//Random r = new Random(alphabet.length);
 	Random r = new Random(alphabet.length);
@@ -229,7 +226,7 @@ public void goback() {
 	VarCheck.disableCount++;
 	}
 	gameFrame.setVisible(false);
-	new level1();
+	new levelCheck();
 }
 @Override
 public void keyReleased(KeyEvent arg0) {
