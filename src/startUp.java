@@ -1,17 +1,11 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GraphicsConfiguration;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,23 +17,24 @@ import javax.swing.border.Border;
 
 public class startUp extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1;
-	
+
 	JFrame Launcher = new JFrame();
 	Font labelFont = (new Font("arial", 5, 25));
 	Font ButtonFont = (new Font("arial", 15, 35));
 	Font welcomeFont = (new Font("arial", 5, 65));
-	JButton start,options,quit,h;
+	JButton start, options, quit, h;
 	JLabel user, welcome, password, message;
 	JTextField userID, userPW;
 	public static int Dificulty = 1;
-	
+	public static int LifesRemaining = 3;
+	public static int KeysInputCount = 0;
 	public static void main(String[] args) throws IOException {
 		new startUp();
 
 	}
-//(getClass().getResource(pathToImage))
+
 	public startUp() throws IOException {
-		Border border = BorderFactory.createDashedBorder(Color.YELLOW,12, 22,3,false);
+		Border border = BorderFactory.createDashedBorder(Color.YELLOW, 12, 22, 3, false);
 		JLabel background = new JLabel(new ImageIcon(getClass().getResource("Launcher_BG.jpg")));
 
 		Launcher.setSize(820, 600);
@@ -49,10 +44,6 @@ public class startUp extends JFrame implements ActionListener {
 		Launcher.setResizable(false);
 		Launcher.setLayout(new BorderLayout());
 		Launcher.setContentPane(background);
-		//Launcher.add(background);
-		
-
-		
 
 		password = new JLabel();
 		password.setSize(300, 350);
@@ -61,8 +52,6 @@ public class startUp extends JFrame implements ActionListener {
 		password.setBorder(border);
 		password.setForeground(Color.white);
 		Launcher.add(password);
-
-		
 
 		welcome = new JLabel("Speed typing Alpha");
 		welcome.setSize(600, 70);
@@ -81,7 +70,7 @@ public class startUp extends JFrame implements ActionListener {
 		start.setFocusPainted(false);
 		start.setForeground(Color.WHITE.brighter());
 		Launcher.add(start);
-		
+
 		options = new JButton("Options");
 		options.setSize(200, 40);
 		options.setLocation(300, 250);
@@ -92,7 +81,7 @@ public class startUp extends JFrame implements ActionListener {
 		options.setFocusPainted(false);
 		options.setForeground(Color.WHITE.brighter());
 		Launcher.add(options);
-		
+
 		quit = new JButton("Quit");
 		quit.setSize(200, 40);
 		quit.setLocation(300, 350);
@@ -103,7 +92,7 @@ public class startUp extends JFrame implements ActionListener {
 		quit.setFocusPainted(false);
 		quit.setForeground(Color.WHITE.brighter());
 		Launcher.add(quit);
-		
+
 		h = new JButton("");
 		h.setSize(200, 40);
 		h.setLocation(300, 350);
@@ -115,23 +104,23 @@ public class startUp extends JFrame implements ActionListener {
 		h.setFocusPainted(false);
 		h.setForeground(Color.WHITE.brighter());
 		Launcher.add(h);
-		
+
 		Launcher.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource()== start) {
-					Launcher.setVisible(false);
-						new levelCheck();
+		if (e.getSource() == start) {
+			Launcher.setVisible(false);
+			new levelCheck();
 		}
-		if (e.getSource()== quit) {
+		if (e.getSource() == quit) {
 			System.exit(0);
 		}
-		
-		if (e.getSource()== options) {
-			 try {
-				 Launcher.setVisible(false);
+
+		if (e.getSource() == options) {
+			try {
+				Launcher.setVisible(false);
 				new Options();
 			} catch (FileNotFoundException | UnsupportedEncodingException e1) {
 			}
