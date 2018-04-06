@@ -12,6 +12,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,8 +21,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+import javax.swing.border.Border;
 
-public class Options extends JFrame implements ActionListener,KeyListener, ItemListener {
+public class Options extends JFrame implements ActionListener,KeyListener {
 	private static final long serialVersionUID = 1L;
 
 	
@@ -29,9 +32,9 @@ public class Options extends JFrame implements ActionListener,KeyListener, ItemL
 	Font ChoiceFont = (new Font("arial", 5, 20));
 	Font ButtonFont = (new Font("arial", 15, 35));
 	Font welcomeFont = (new Font("arial", 5, 65));
-	JButton back,save;
+	JButton back,save,Controls,easy,medium,hard;
 	Choice difficultyc;
-	JLabel Dificulty, limitedMistakes, textArea1;
+	JLabel Dificulty, textArea1;
 	JTextField userID, userPW;
 	public FileWriter file; 
 	 
@@ -40,7 +43,7 @@ public class Options extends JFrame implements ActionListener,KeyListener, ItemL
 		 file = new FileWriter("config.txt",false);
 		} catch (IOException e) {
 		}
-
+		Border border = BorderFactory.createDashedBorder(Color.YELLOW,4, 2,3,false);
 		JLabel background = new JLabel(new ImageIcon(getClass().getResource("Launcher_BG.jpg")));
 
 		options.setSize(820, 600);
@@ -54,34 +57,71 @@ public class Options extends JFrame implements ActionListener,KeyListener, ItemL
 		options.add(background);
 		
 		textArea1 = new JLabel("",SwingConstants.CENTER);
-		textArea1.setLocation(400,20);
-		textArea1.setSize(400,400);
+		textArea1.setLocation(300,20);
+		textArea1.setSize(500,450);
 		textArea1.setFont(labelFont);
-		textArea1.setVerticalAlignment(JLabel.TOP);
-		textArea1.setHorizontalAlignment(JLabel.RIGHT);
+		textArea1.setVerticalAlignment(JLabel.CENTER);
+		textArea1.setHorizontalAlignment(JLabel.CENTER);
 		textArea1.setForeground(Color.CYAN.darker());
-		textArea1.setText("<html>Beginner dificulty - you will have unlimited time and unlimited mistakes for all levels.</html>");
+		textArea1.setBorder(border);
+		textArea1.setText("<html> Chose dificulty and see the Key Bindings for more information.</html>");
 		background.add(textArea1);
 		
-		difficultyc = new Choice();
-		difficultyc.add("Beginner");
-		difficultyc.add("Advanced");
-		difficultyc.add("Expert");
-		difficultyc.setSize(150,30);
-		difficultyc.setLocation(200,47);
-		difficultyc.setFocusable(false);
-		difficultyc.addItemListener(this);
-		difficultyc.setFont(ChoiceFont);
-		difficultyc.select("Beginner");
-		background.add(difficultyc);
 		
-		Dificulty = new JLabel("Difficulty");
-		Dificulty.setSize(150,40);
-		Dificulty.setLocation(40,40);
-		Dificulty.setForeground(Color.YELLOW.darker());
+		Dificulty = new JLabel("Difficulty:");
+		Dificulty.setSize(250,40);
+		Dificulty.setLocation(60,70);
+		Dificulty.setForeground(Color.BLUE.darker());
 		Dificulty.setFont(labelFont);
 		background.add(Dificulty);
 		
+		Controls = new JButton("Key Bindings");
+		Controls.setSize(250,40);
+		Controls.setLocation(280,520);
+		Controls.setForeground(Color.YELLOW.darker());
+		Controls.addActionListener(this);
+		Controls.setForeground(Color.YELLOW.darker());
+		Controls.setContentAreaFilled(false);
+		Controls.setOpaque(false);
+		Controls.setFocusPainted(false);
+		Controls.setFont(labelFont);
+		background.add(Controls);
+		
+		easy = new JButton("Beginner");
+		easy.setSize(200,40);
+		easy.setLocation(40,150);
+		easy.setOpaque(false);
+		easy.setFocusPainted(false);
+		easy.setForeground(Color.ORANGE.brighter());
+		easy.setFont(new Font("Arial",5,35));
+		easy.setContentAreaFilled(false);
+		easy.addActionListener(this);
+		easy.setVisible(true);
+		background.add(easy);
+		
+		medium = new JButton("Advanced");
+		medium.setSize(200,40);
+		medium.setLocation(40,250);
+		medium.setOpaque(false);
+		medium.setFocusPainted(false);
+		medium.setForeground(Color.ORANGE.brighter());
+		medium.setFont(new Font("Arial",5,35));
+		medium.setContentAreaFilled(false);
+		medium.addActionListener(this);
+		medium.setVisible(true);
+		background.add(medium);
+		
+		hard = new JButton("Expert");
+		hard.setSize(200,40);
+		hard.setLocation(40,350);
+		hard.setOpaque(false);
+		hard.setFocusPainted(false);
+		hard.setForeground(Color.ORANGE.brighter());
+		hard.setFont(new Font("Arial",5,35));
+		hard.setContentAreaFilled(false);
+		hard.addActionListener(this);
+		hard.setVisible(true);
+		background.add(hard);
 		
 		save = new JButton("Save");
 		save.setSize(200,40);
@@ -89,7 +129,7 @@ public class Options extends JFrame implements ActionListener,KeyListener, ItemL
 		save.setOpaque(false);
 		save.setFocusPainted(false);
 		save.setForeground(Color.GREEN.darker());
-		save.setFont(new Font("Arial",3,35));
+		save.setFont(new Font("Arial",5,35));
 		save.setContentAreaFilled(false);
 		save.addActionListener(this);
 		save.setVisible(true);
@@ -101,7 +141,7 @@ public class Options extends JFrame implements ActionListener,KeyListener, ItemL
 		back.setOpaque(false);
 		back.setFocusPainted(false);
 		back.setForeground(Color.RED.darker());
-		back.setFont(new Font("Arial",3,35));
+		back.setFont(new Font("Arial",5,35));
 		back.setContentAreaFilled(false);
 		back.addActionListener(this);
 		back.setVisible(true);
@@ -117,6 +157,11 @@ public class Options extends JFrame implements ActionListener,KeyListener, ItemL
 			goback();
 		}
 		
+		if (ev.getSource()==Controls) {
+			textArea1.setText("<html> 1.Esc button can be pressed at any time, to switch from one menu to another and leave any level . "
+					+ "  2. If the player leaves level without completing it, any progress in the level won't be saved.  </html>");
+		}
+		
 		if (ev.getSource()==save) {
 			try {
 				savechanges();
@@ -124,6 +169,20 @@ public class Options extends JFrame implements ActionListener,KeyListener, ItemL
 
 			}
 			goback();
+		}
+		if (ev.getSource()==easy) {
+			textArea1.setText("<html>Beginner  - you will have unlimited time and unlimited mistakes for all levels.</html>");
+			startUp.Dificulty = 1;
+		}
+		if (ev.getSource()==medium) {
+			textArea1.setText("<html>Advanced  - You will have 3 lifes. Each time wrong button is pressed one life will be lost."
+					+ "By completing a level, award of +1 life will be given. Game is lost if all 3 lifes are gone before finishing the last level."
+					+ " If player have 3 lifes when level is completed, no extra lifes will be awarded.</html>");
+			startUp.Dificulty = 2;
+		}
+		if (ev.getSource()==hard) {
+			textArea1.setText("<html>Experts have only one life thorough the whole game and limited time for each level.</html>");
+			startUp.Dificulty = 3;
 		}
 		
 	}
@@ -135,17 +194,12 @@ public class Options extends JFrame implements ActionListener,KeyListener, ItemL
 			goback();
 		}
 	}
-
-
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 	}
-
-
 	@Override
 	public void keyTyped(KeyEvent arg0) {	
 	}
-	
 	public void goback()  {
 		try {
 			new startUp();
@@ -154,30 +208,12 @@ public class Options extends JFrame implements ActionListener,KeyListener, ItemL
 		options.setVisible(false);
 		
 	}
-
 	public void savechanges() throws IOException {
 		file.write("Difficulty level: "+startUp.Dificulty);
 		file.flush();
 		file.close();
 	}
 
-
-	@Override
-	public void itemStateChanged(ItemEvent ItemEvent) {
-		if(ItemEvent.getItem()=="Advanced") {
-			textArea1.setText("<html>Advanced Difficulty - You will have to finish game with less than 3 mistakes in each level."
-					+ " Every level finished will give you back one life if you have less than three of them.</html>");
-			startUp.Dificulty = 2;
-		}
-		if(ItemEvent.getItem()=="Beginner") {
-			textArea1.setText("<html>Beginner difficulty - you will have unlimited time and unlimited mistakes for all levels.</html>");
-			startUp.Dificulty = 1;
-		}
-		if(ItemEvent.getItem()=="Expert") {
-			textArea1.setText("<html>Experts have only one life thorough the whole game and limited time for each level.</html>");
-			startUp.Dificulty = 3;
-		}
-		
 		
 	}
-}
+
