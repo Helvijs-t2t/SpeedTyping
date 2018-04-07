@@ -56,6 +56,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 		character.setSize(100, 100);
 		character.setLocation(150, 550);
 		backgroundPic.add(character);
+		startUp.isLevelFinished = false;
 
 		l1 = new JLabel(newList[0] + "");
 		l1.setSize(30, 40);
