@@ -28,6 +28,7 @@ public class startUp extends JFrame implements ActionListener {
 	public static int Dificulty = 1;
 	public static int LifesRemaining = 3;
 	public static int KeysInputCount = 0;
+	public static boolean isLevelFinished = false;
 	public static void main(String[] args) throws IOException {
 		new startUp();
 

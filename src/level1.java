@@ -29,9 +29,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 	public int temp = 0;
 	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
 	public JButton btnBack;
-
 	public level1() {
-		char[] list1 = { 'x', 'h', 's', 'l', 'f', 'u', 'o', 'k', 'g', 'j' };
 		char[] alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
 				's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 		String[] newList = new String[11];
@@ -153,6 +151,12 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent btn) {
 		if (btn.getSource() == btnBack) {
+			if (startUp.LifesRemaining < 0) {
+				startUp.LifesRemaining = 0;
+			}
+			if (startUp.LifesRemaining > 0 && startUp.LifesRemaining < 3) {
+				startUp.LifesRemaining++;
+			}
 			goback();
 		}
 
@@ -171,7 +175,6 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 		} else
 
 		if (ke.getKeyCode() == KeyEvent.VK_H && keyspressed == 1) {
-			System.out.println("correct2");
 			character.setLocation(300, 550);
 			repaint();
 			keyspressed++;
@@ -179,7 +182,6 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 		} else
 
 		if (ke.getKeyCode() == KeyEvent.VK_S && keyspressed == 2) {
-			System.out.println("correct3");
 			character.setLocation(400, 550);
 			repaint();
 			keyspressed++;
@@ -240,6 +242,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 
 	public void goback() {
 		if (VarCheck.disableCount == 0 && keyspressed > 9) {
+			startUp.isLevelFinished = true;
 			VarCheck.levelspassed++;
 			VarCheck.disableCount++;
 		}
@@ -293,22 +296,13 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 			life3.setVisible(false);
 		}
 		if (startUp.LifesRemaining == 0) {
+			life1.setVisible(false);
 			displayLabel.setText("Level Failed");
 			btnBack.setVisible(true);
 			startUp.KeysInputCount = 0;
 			VarCheck.levelspassed = 0;
 			startUp.LifesRemaining = 3;
-			gameFrame.setVisible(false);
-			new levelCheck();
 		}
 		repaint();
 	}
-
-	public void TakeAwayLife() {
-		startUp.KeysInputCount--;
-		if (startUp.KeysInputCount == 3) {
-
-		}
-	}
-
 }
