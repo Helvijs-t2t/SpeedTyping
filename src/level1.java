@@ -21,14 +21,17 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 	public final int WIDTH = 1200, HEIGHT = 800;
 	public String displayString = "";
 	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0;
+
 	public JLabel life1 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	public JLabel life2 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	public JLabel life3 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
+	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
 	public JLabel character = new JLabel(new ImageIcon(getClass().getResource("rsz_stman.png")));
+
 	public int keyspressed = 0;
 	public int temp = 0;
-	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
 	public JButton btnBack;
+
 	public level1() {
 		char[] alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
 				's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
@@ -155,9 +158,9 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 			if (startUp.LifesRemaining < 0) {
 				startUp.LifesRemaining = 0;
 			}
-			if (startUp.LifesRemaining > 0 && startUp.LifesRemaining < 3) {
-				startUp.LifesRemaining++;
-			}
+			// if (startUp.LifesRemaining > 0 && startUp.LifesRemaining < 3) {
+			// startUp.LifesRemaining++;
+			// }
 			goback();
 		}
 
@@ -166,8 +169,8 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent ke) {
 		if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
-			goback();
-		}
+			goback1();
+		} else
 
 		if (ke.getKeyCode() == KeyEvent.VK_X && keyspressed == 0) {
 			character.setLocation(200, 550);
@@ -229,10 +232,8 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 		} else {
 			startUp.LifesRemaining--;
 			DisplayLife();
-			temp++;
 		}
-		// if (!(ke.getKeyCode() == KeyEvent.VK_ESCAPE) && !(ke.getKeyCode() ==
-		// KeyEvent.VK_X) && keyspressed == 0 && temp >= 0)
+
 		if (keyspressed == 10) {
 			character.setVisible(false);
 			displayLabel.setText("Level Complete");
@@ -246,9 +247,25 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 			startUp.isLevelFinished = true;
 			VarCheck.levelspassed++;
 			VarCheck.disableCount++;
+			if (startUp.LifesRemaining < 0) {
+				startUp.LifesRemaining = 0;
+			}
+			if (startUp.LifesRemaining > 0 && startUp.LifesRemaining < 3) {
+				startUp.LifesRemaining++;
+			}
 		}
 		gameFrame.setVisible(false);
 		new levelCheck();
+	}
+
+	public void goback1() {
+		if (VarCheck.disableCount != 0 && keyspressed < 9) {
+			startUp.LifesRemaining = 3;
+			gameFrame.setVisible(false);
+			new levelCheck();
+		} else {
+			goback();
+		}
 	}
 
 	@Override

@@ -140,11 +140,20 @@ public class level8 implements KeyListener, ActionListener {
 			goback();
 		}
 	}
+	public void goback1() {
+		if (VarCheck.disableCount != 0 && keyspressed < 9) {
+			startUp.LifesRemaining = 3;
+			gameFrame.setVisible(false);
+			new levelCheck();
+		} else {
+			goback();
+		}
+	}
 
 	@Override
 	public void keyPressed(KeyEvent ke) {
 		if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
-			goback();
+			goback1();
 		}
 
 		if (ke.getKeyCode() == KeyEvent.VK_Z && keyspressed == 0) {

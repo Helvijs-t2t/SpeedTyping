@@ -144,7 +144,7 @@ public class level2 implements KeyListener, ActionListener {
 	@Override
 	public void keyPressed(KeyEvent ke) {
 		if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
-			goback();
+			goback1();
 
 		}
 
@@ -192,6 +192,16 @@ public class level2 implements KeyListener, ActionListener {
 			character.setVisible(false);
 			displayLabel.setText("Level Complete");
 			btnBack.setVisible(true);
+		}
+	}
+
+	public void goback1() {
+		if (VarCheck.disableCount != 0 && keyspressed < 9) {
+			startUp.LifesRemaining = 3;
+			gameFrame.setVisible(false);
+			new levelCheck();
+		} else {
+			goback();
 		}
 	}
 
