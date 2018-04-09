@@ -127,11 +127,10 @@ public class startUp extends JFrame implements ActionListener {
 		}
 
 		if (e.getSource() == options) {
-			try {
+			
 				Launcher.setVisible(false);
 				new Options();
-			} catch (FileNotFoundException | UnsupportedEncodingException e1) {
-			}
+		
 		}
 	}
 

@@ -58,7 +58,9 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 		gameFrame.setLocationRelativeTo(null);
 		gameFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		gameFrame.add(backgroundPic);
-
+		if (startUp.Dificulty > 1 && startUp.LifesRemaining==0) {
+			startUp.LifesRemaining = 3;
+		}
 		DisplayLife();
 		character.setSize(100, 100);
 		character.setLocation(150, 550);
@@ -71,6 +73,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 		l1.setFont(new Font("Arial Black", 3, 35));
 		l1.setForeground(Color.BLACK.darker());
 		backgroundPic.add(l1);
+
 
 		l2 = new JLabel(newList[1] + "");
 		l2.setSize(30, 40);
@@ -244,7 +247,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 				repaint();
 				keyspressed++;
 				startUp.KeysInputCount++;
-			} else {
+			} else if(ke.getKeyCode() != KeyEvent.VK_ESCAPE) {
 				startUp.LifesRemaining--;
 				DisplayLife();
 			}
@@ -281,9 +284,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 
 	public void goback1() {
 		if (VarCheck.disableCount != 0 && keyspressed < 9) {
-			if (startUp.Dificulty > 1) {
-				startUp.LifesRemaining = 3;
-			}
+
 			gameFrame.setVisible(false);
 			new levelCheck();
 		} else {
@@ -362,6 +363,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 					timer.cancel();
 					acceptInput = false;
 					displayLabel.setText("Level Failed");
+					
 					btnBack.setVisible(true);
 				}
 			}

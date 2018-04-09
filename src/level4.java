@@ -212,7 +212,7 @@ public class level4 implements KeyListener, ActionListener, Runnable {
 				character.setLocation(1100, 550);
 
 				keyspressed++;
-			} else {
+			} else if (ke.getKeyCode() != KeyEvent.VK_ESCAPE) {
 				startUp.LifesRemaining--;
 				DisplayLife();
 			}

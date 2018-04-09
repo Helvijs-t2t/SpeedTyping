@@ -215,7 +215,7 @@ public class level7 implements KeyListener, ActionListener, Runnable {
 			} else if (ke.getKeyCode() == KeyEvent.VK_F8 && keyspressed == 9) {
 				character.setLocation(1000, 550);
 				keyspressed++;
-			} else {
+			} else if (ke.getKeyCode() != KeyEvent.VK_ESCAPE) {
 				startUp.LifesRemaining--;
 				DisplayLife();
 			}

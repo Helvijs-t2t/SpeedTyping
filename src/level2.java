@@ -47,6 +47,9 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 		character.setLocation(150, 550);
 		backgroundPic.add(character);
 
+		if (startUp.Dificulty > 1 && startUp.LifesRemaining==0) {
+			startUp.LifesRemaining = 3;
+		}
 		l1 = new JLabel("z");
 		l1.setSize(30, 40);
 		l1.setLocation(150, 100);
@@ -206,7 +209,7 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 			} else if (ke.getKeyCode() == KeyEvent.VK_V && keyspressed == 9) {
 				character.setLocation(1100, 550);
 				keyspressed++;
-			} else {
+			} else if (ke.getKeyCode() != KeyEvent.VK_ESCAPE) {
 				startUp.LifesRemaining--;
 				DisplayLife();
 			}
@@ -221,7 +224,7 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 	}
 
 	public void goback1() {
-		if (VarCheck.disableCount != 0 && keyspressed < 9) {
+		if ( keyspressed < 9) {
 			if (startUp.Dificulty > 1) {
 				startUp.LifesRemaining = 3;
 			}

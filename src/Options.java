@@ -36,11 +36,8 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 	JTextField userID, userPW;
 	public FileWriter file; 
 	 
-	public Options() throws FileNotFoundException, UnsupportedEncodingException {
-		try {
-		 file = new FileWriter("config.txt",false);
-		} catch (IOException e) {
-		}
+	public Options()  {
+
 		Border border = BorderFactory.createDashedBorder(Color.YELLOW,4, 2,3,false);
 		JLabel background = new JLabel(new ImageIcon(getClass().getResource("Launcher_BG.jpg")));
 
@@ -161,11 +158,6 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 		}
 		
 		if (ev.getSource()==save) {
-			try {
-				savechanges();
-			} catch (IOException e) {
-
-			}
 			goback();
 		}
 		if (ev.getSource()==easy) {
@@ -206,12 +198,7 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 		options.setVisible(false);
 		
 	}
-	public void savechanges() throws IOException {
-		file.write("Difficulty level: "+startUp.Dificulty);
-		file.flush();
-		file.close();
-	}
 
-		
+	
 	}
 
