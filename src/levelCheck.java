@@ -31,7 +31,7 @@ public class levelCheck extends JFrame implements ActionListener, KeyListener {
 
 		profile.addKeyListener(this);
 		profile.setTitle("Speed Typing\u2122");
-		profile.setSize(1180, 800);
+		profile.setSize(1180, 700);
 		profile.setLocationRelativeTo(null);
 		profile.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		profile.setLayout(new BorderLayout());

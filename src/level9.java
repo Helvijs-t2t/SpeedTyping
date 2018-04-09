@@ -17,7 +17,7 @@ import javax.swing.WindowConstants;
 public class level9 implements KeyListener, ActionListener, Runnable {
 	JFrame gameFrame = new JFrame();
 
-	public final int WIDTH = 1200, HEIGHT = 800;
+	public final int WIDTH = 1200, HEIGHT = 760;
 	public String displayString = "";
 	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0, ltime;
 	protected JLabel life1 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
@@ -261,36 +261,36 @@ public class level9 implements KeyListener, ActionListener, Runnable {
 
 			if (startUp.LifesRemaining == 3) {
 				life1.setSize(95, 95);
-				life1.setLocation(10, 670);
+				life1.setLocation(10, 640);
 				backgroundPic.add(life1);
 				life2.setSize(95, 95);
-				life2.setLocation(110, 670);
+				life2.setLocation(110, 640);
 				backgroundPic.add(life2);
 				life3.setSize(95, 95);
-				life3.setLocation(210, 670);
+				life3.setLocation(210, 640);
 				backgroundPic.add(life3);
 			}
 
 			if (startUp.LifesRemaining == 2) {
 				life1.setSize(95, 95);
-				life1.setLocation(10, 670);
+				life1.setLocation(10, 640);
 				backgroundPic.add(life1);
 				life2.setSize(95, 95);
-				life2.setLocation(110, 670);
+				life2.setLocation(110, 640);
 				backgroundPic.add(life2);
 				life3.setSize(95, 95);
-				life3.setLocation(210, 670);
+				life3.setLocation(210, 640);
 				life3.setVisible(false);
 			}
 			if (startUp.LifesRemaining == 1) {
 				life1.setSize(95, 95);
-				life1.setLocation(10, 670);
+				life1.setLocation(10, 640);
 				backgroundPic.add(life1);
 				life2.setSize(95, 95);
-				life2.setLocation(110, 670);
+				life2.setLocation(110, 640);
 				life2.setVisible(false);
 				life3.setSize(95, 95);
-				life3.setLocation(210, 670);
+				life3.setLocation(210, 640);
 				life3.setVisible(false);
 			}
 			if (startUp.LifesRemaining == 0) {
