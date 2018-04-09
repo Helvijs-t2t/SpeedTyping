@@ -7,30 +7,34 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
-public class level1 extends JFrame implements ActionListener, KeyListener {
+public class level1 extends JFrame implements ActionListener, KeyListener, Runnable {
 	private static final long serialVersionUID = 1L;
 
 	JFrame gameFrame = new JFrame();
 	public static level1 Startgame;
 	public final int WIDTH = 1200, HEIGHT = 800;
 	public String displayString = "";
-	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0;
-
+	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0, ltime;
 	public JLabel life1 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	public JLabel life2 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	public JLabel life3 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
 	public JLabel character = new JLabel(new ImageIcon(getClass().getResource("rsz_stman.png")));
-
+	public final Timer timer = new Timer();
+	public boolean runB = true;
 	public int keyspressed = 0;
 	public int temp = 0;
 	public JButton btnBack;
+
 
 	public level1() {
 		char[] alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
@@ -138,6 +142,13 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 		displayLabel.setForeground(Color.RED.darker());
 		backgroundPic.add(displayLabel);
 
+		ltime = new JLabel("");
+		ltime.setSize(600, 80);
+		ltime.setLocation(300, 10);
+		ltime.setFont(new Font("Arial", 3, 50));
+		ltime.setForeground(Color.ORANGE.brighter());
+		backgroundPic.add(ltime);
+
 		btnBack = new JButton("Back");
 		btnBack.setSize(200, 40);
 		btnBack.setLocation(470, 400);
@@ -155,19 +166,22 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent btn) {
 		if (btn.getSource() == btnBack) {
-			if (startUp.LifesRemaining < 0) {
-				startUp.LifesRemaining = 0;
+			if (startUp.Dificulty > 1) {
+				if (startUp.LifesRemaining < 0) {
+					startUp.LifesRemaining = 0;
+				}
 			}
 			// if (startUp.LifesRemaining > 0 && startUp.LifesRemaining < 3) {
 			// startUp.LifesRemaining++;
 			// }
+			timer.cancel();
 			goback();
 		}
-
 	}
 
 	@Override
 	public void keyPressed(KeyEvent ke) {
+
 		if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			goback1();
 		} else
@@ -176,6 +190,10 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 			character.setLocation(200, 550);
 			keyspressed++;
 			startUp.KeysInputCount++;
+			if (runB = true && startUp.Dificulty == 3) {
+				run();
+				runB = false;
+			}
 		} else
 
 		if (ke.getKeyCode() == KeyEvent.VK_H && keyspressed == 1) {
@@ -235,6 +253,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 		}
 
 		if (keyspressed == 10) {
+			timer.cancel();
 			character.setVisible(false);
 			displayLabel.setText("Level Complete");
 			btnBack.setVisible(true);
@@ -247,23 +266,29 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 			startUp.isLevelFinished = true;
 			VarCheck.levelspassed++;
 			VarCheck.disableCount++;
-			if (startUp.LifesRemaining < 0) {
-				startUp.LifesRemaining = 0;
-			}
-			if (startUp.LifesRemaining > 0 && startUp.LifesRemaining < 3) {
-				startUp.LifesRemaining++;
+			if (startUp.Dificulty > 1) {
+				if (startUp.LifesRemaining < 0) {
+					startUp.LifesRemaining = 0;
+				}
+				if (startUp.LifesRemaining > 0 && startUp.LifesRemaining < 3) {
+					startUp.LifesRemaining++;
+				}
 			}
 		}
+		timer.cancel();
 		gameFrame.setVisible(false);
 		new levelCheck();
 	}
 
 	public void goback1() {
 		if (VarCheck.disableCount != 0 && keyspressed < 9) {
-			startUp.LifesRemaining = 3;
+			if (startUp.Dificulty > 1) {
+				startUp.LifesRemaining = 3;
+			}
 			gameFrame.setVisible(false);
 			new levelCheck();
 		} else {
+			timer.cancel();
 			goback();
 		}
 	}
@@ -279,48 +304,72 @@ public class level1 extends JFrame implements ActionListener, KeyListener {
 	}
 
 	public void DisplayLife() {
-		if (startUp.LifesRemaining == 3) {
-			life1.setSize(95, 95);
-			life1.setLocation(10, 670);
-			backgroundPic.add(life1);
-			life2.setSize(95, 95);
-			life2.setLocation(110, 670);
-			backgroundPic.add(life2);
-			life3.setSize(95, 95);
-			life3.setLocation(210, 670);
-			backgroundPic.add(life3);
-		}
+		if (startUp.Dificulty > 1) {
+			if (startUp.LifesRemaining == 3) {
+				life1.setSize(95, 95);
+				life1.setLocation(10, 670);
+				backgroundPic.add(life1);
+				life2.setSize(95, 95);
+				life2.setLocation(110, 670);
+				backgroundPic.add(life2);
+				life3.setSize(95, 95);
+				life3.setLocation(210, 670);
+				backgroundPic.add(life3);
+			}
 
-		if (startUp.LifesRemaining == 2) {
-			life1.setSize(95, 95);
-			life1.setLocation(10, 670);
-			backgroundPic.add(life1);
-			life2.setSize(95, 95);
-			life2.setLocation(110, 670);
-			backgroundPic.add(life2);
-			life3.setSize(95, 95);
-			life3.setLocation(210, 670);
-			life3.setVisible(false);
+			if (startUp.LifesRemaining == 2) {
+				life1.setSize(95, 95);
+				life1.setLocation(10, 670);
+				backgroundPic.add(life1);
+				life2.setSize(95, 95);
+				life2.setLocation(110, 670);
+				backgroundPic.add(life2);
+				life3.setSize(95, 95);
+				life3.setLocation(210, 670);
+				life3.setVisible(false);
+			}
+			if (startUp.LifesRemaining == 1) {
+				life1.setSize(95, 95);
+				life1.setLocation(10, 670);
+				backgroundPic.add(life1);
+				life2.setSize(95, 95);
+				life2.setLocation(110, 670);
+				life2.setVisible(false);
+				life3.setSize(95, 95);
+				life3.setLocation(210, 670);
+				life3.setVisible(false);
+			}
+			if (startUp.LifesRemaining == 0) {
+				life1.setVisible(false);
+				displayLabel.setText("Level Failed");
+				btnBack.setVisible(true);
+				startUp.KeysInputCount = 0;
+				VarCheck.levelspassed = 0;
+				startUp.LifesRemaining = 3;
+			}
+			repaint();
 		}
-		if (startUp.LifesRemaining == 1) {
-			life1.setSize(95, 95);
-			life1.setLocation(10, 670);
-			backgroundPic.add(life1);
-			life2.setSize(95, 95);
-			life2.setLocation(110, 670);
-			life2.setVisible(false);
-			life3.setSize(95, 95);
-			life3.setLocation(210, 670);
-			life3.setVisible(false);
-		}
-		if (startUp.LifesRemaining == 0) {
-			life1.setVisible(false);
-			displayLabel.setText("Level Failed");
-			btnBack.setVisible(true);
-			startUp.KeysInputCount = 0;
-			VarCheck.levelspassed = 0;
-			startUp.LifesRemaining = 3;
-		}
-		repaint();
 	}
+
+	@Override
+	public void run() {
+
+		timer.scheduleAtFixedRate(new TimerTask() {
+			int i = 5;
+
+			public void run() {
+				// System.out.println(i--);
+				ltime.setText("Time Remaining: " + i--);
+				repaint();
+				if (i < 0) {
+
+					timer.cancel();
+					displayLabel.setText("Level Failed");
+					btnBack.setVisible(true);
+				}
+			}
+		}, 0, 1000);
+
+	}
+
 }

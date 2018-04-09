@@ -5,27 +5,37 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
-public class level6 implements KeyListener, ActionListener {
+public class level6 implements KeyListener, ActionListener,Runnable {
 	JFrame gameFrame = new JFrame();
 	public final int WIDTH = 1200, HEIGHT = 800;
 	public String displayString = "";
-	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0;
+	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0,ltime;
 	protected JLabel life1 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	protected JLabel life2 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	protected JLabel life3 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	public JLabel character = new JLabel(new ImageIcon(getClass().getResource("rsz_stman.png")));
 	public int keyspressed = 0;
 	public int spresseed = 0;
+	public final Timer timer = new Timer();
+	public boolean runB = true;
 	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
 	public JButton btnBack;
 
 	public level6() {
+		
+		if (startUp.Dificulty == 1) {
+			startUp.LifesRemaining = 999;
+		}
+		
 		gameFrame.setTitle("Speed Typing Alpha");
 		gameFrame.setSize(WIDTH, HEIGHT);
 		gameFrame.addKeyListener(this);
@@ -53,6 +63,13 @@ public class level6 implements KeyListener, ActionListener {
 		l2.setFont(new Font("Arial Black", 3, 35));
 		l2.setForeground(Color.BLACK.darker());
 		backgroundPic.add(l2);
+		
+		ltime = new JLabel("");
+		ltime.setSize(600, 80);
+		ltime.setLocation(300, 10);
+		ltime.setFont(new Font("Arial", 3, 50));
+		ltime.setForeground(Color.ORANGE.brighter());
+		backgroundPic.add(ltime);
 
 		l3 = new JLabel("9");
 		l3.setSize(40, 40);
@@ -144,6 +161,7 @@ public class level6 implements KeyListener, ActionListener {
 	public void goback1() {
 		if (VarCheck.disableCount != 0 && keyspressed < 9) {
 			startUp.LifesRemaining = 3;
+			timer.cancel();
 			gameFrame.setVisible(false);
 			new levelCheck();
 		} else {
@@ -160,7 +178,10 @@ public class level6 implements KeyListener, ActionListener {
 
 		if (ke.getKeyCode() == KeyEvent.VK_K && keyspressed == 0) {
 			character.setLocation(200, 550);
-
+			if (runB = true && startUp.Dificulty == 3) {
+				run();
+				runB = false;
+			}
 			keyspressed++;
 		} else
 
@@ -227,6 +248,7 @@ public class level6 implements KeyListener, ActionListener {
 		if (startUp.LifesRemaining < 0) {
 			startUp.LifesRemaining = 0;
 		}
+		timer.cancel();
 		gameFrame.setVisible(false);
 		new levelCheck();
 	}
@@ -244,6 +266,7 @@ public class level6 implements KeyListener, ActionListener {
 	}
 
 	public void DisplayLife() {
+		if (startUp.Dificulty > 1) {
 		if (startUp.LifesRemaining == 3) {
 			life1.setSize(95, 95);
 			life1.setLocation(10, 670);
@@ -290,4 +313,26 @@ public class level6 implements KeyListener, ActionListener {
 		gameFrame.repaint();
 
 	}
+	}
+	@Override
+	public void run() {
+
+		timer.scheduleAtFixedRate(new TimerTask() {
+			int i = 5;
+
+			public void run() {
+				// System.out.println(i--);
+				ltime.setText("Time Remaining: " + i--);
+				gameFrame.repaint();
+				if (i < 0) {
+
+					timer.cancel();
+					displayLabel.setText("Level Failed");
+					btnBack.setVisible(true);
+				}
+			}
+		}, 0, 1000);
+
+	}
+
 }
