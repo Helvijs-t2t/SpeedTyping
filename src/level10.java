@@ -321,7 +321,7 @@ public class level10 implements KeyListener, ActionListener, Runnable {
 				ltime.setText("Time Remaining: " + i--);
 				gameFrame.repaint();
 				if (i < 0) {
-
+					startUp.LifesRemaining=3;
 					timer.cancel();
 					acceptInput = false;
 					displayLabel.setText("Level Failed");

@@ -363,7 +363,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 					timer.cancel();
 					acceptInput = false;
 					displayLabel.setText("Level Failed");
-					
+					startUp.LifesRemaining=3;
 					btnBack.setVisible(true);
 				}
 			}
