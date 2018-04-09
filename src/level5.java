@@ -14,11 +14,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
-public class level5 implements KeyListener, ActionListener,Runnable {
+public class level5 implements KeyListener, ActionListener, Runnable {
 	JFrame gameFrame = new JFrame();
 	public final int WIDTH = 1200, HEIGHT = 800;
 	public String displayString = "";
-	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0,ltime;
+	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0, ltime;
 	protected JLabel life1 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	protected JLabel life2 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	protected JLabel life3 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
@@ -28,6 +28,7 @@ public class level5 implements KeyListener, ActionListener,Runnable {
 	public boolean runB = true;
 	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
 	public JButton btnBack;
+	public boolean acceptInput = true;
 
 	public level5() {
 		if (startUp.Dificulty == 1) {
@@ -53,7 +54,7 @@ public class level5 implements KeyListener, ActionListener,Runnable {
 		l1.setFont(new Font("Arial Black", 3, 35));
 		l1.setForeground(Color.BLACK.darker());
 		backgroundPic.add(l1);
-		
+
 		ltime = new JLabel("");
 		ltime.setSize(600, 80);
 		ltime.setLocation(300, 10);
@@ -160,65 +161,68 @@ public class level5 implements KeyListener, ActionListener,Runnable {
 		if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			goback1();
 
-		} else
-
-		if (ke.getKeyCode() == KeyEvent.VK_Z && keyspressed == 0) {
-			character.setLocation(200, 550);
-			if (runB = true && startUp.Dificulty == 3) {
-				run();
-				runB = false;
-			}
-			keyspressed++;
-		} else
-
-		if (ke.getKeyCode() == KeyEvent.VK_1 && keyspressed == 1) {
-			character.setLocation(300, 550);
-
-			keyspressed++;
-		} else
-
-		if (ke.getKeyCode() == KeyEvent.VK_F5 && keyspressed == 2) {
-			character.setLocation(400, 550);
-
-			keyspressed++;
-		} else
-
-		if (ke.getKeyCode() == KeyEvent.VK_P && keyspressed == 3) {
-			character.setLocation(500, 550);
-
-			keyspressed++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_M && keyspressed == 4) {
-			character.setLocation(600, 550);
-
-			keyspressed++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_R && keyspressed == 5) {
-			character.setLocation(700, 550);
-
-			keyspressed++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_S && keyspressed == 6) {
-			character.setLocation(800, 550);
-
-			keyspressed++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_SEMICOLON && keyspressed == 7) {
-			character.setLocation(900, 550);
-
-			keyspressed++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_4 && keyspressed == 8) {
-			character.setLocation(1000, 550);
-
-			keyspressed++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_2 && keyspressed == 9) {
-			character.setLocation(1100, 550);
-
-			keyspressed++;
-		} else {
-			startUp.LifesRemaining--;
-			DisplayLife();
 		}
-		if (keyspressed == 10) {
-			character.setVisible(false);
-			displayLabel.setText("Level Complete");
-			btnBack.setVisible(true);
+		if (acceptInput) {
+			if (ke.getKeyCode() == KeyEvent.VK_Z && keyspressed == 0) {
+				character.setLocation(200, 550);
+				if (runB = true && startUp.Dificulty == 3) {
+					run();
+					runB = false;
+				}
+				keyspressed++;
+			} else
+
+			if (ke.getKeyCode() == KeyEvent.VK_1 && keyspressed == 1) {
+				character.setLocation(300, 550);
+
+				keyspressed++;
+			} else
+
+			if (ke.getKeyCode() == KeyEvent.VK_F5 && keyspressed == 2) {
+				character.setLocation(400, 550);
+
+				keyspressed++;
+			} else
+
+			if (ke.getKeyCode() == KeyEvent.VK_P && keyspressed == 3) {
+				character.setLocation(500, 550);
+
+				keyspressed++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_M && keyspressed == 4) {
+				character.setLocation(600, 550);
+
+				keyspressed++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_R && keyspressed == 5) {
+				character.setLocation(700, 550);
+
+				keyspressed++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_S && keyspressed == 6) {
+				character.setLocation(800, 550);
+
+				keyspressed++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_SEMICOLON && keyspressed == 7) {
+				character.setLocation(900, 550);
+
+				keyspressed++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_4 && keyspressed == 8) {
+				character.setLocation(1000, 550);
+
+				keyspressed++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_2 && keyspressed == 9) {
+				character.setLocation(1100, 550);
+
+				keyspressed++;
+			} else {
+				startUp.LifesRemaining--;
+				DisplayLife();
+			}
+			if (keyspressed == 10) {
+				timer.cancel();
+				acceptInput = false;
+				character.setVisible(false);
+				displayLabel.setText("Level Complete");
+				btnBack.setVisible(true);
+			}
 		}
 	}
 
@@ -310,6 +314,7 @@ public class level5 implements KeyListener, ActionListener,Runnable {
 
 		}
 	}
+
 	@Override
 	public void run() {
 

@@ -34,7 +34,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 	public int keyspressed = 0;
 	public int temp = 0;
 	public JButton btnBack;
-
+	public boolean acceptInput = true;
 
 	public level1() {
 		char[] alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
@@ -181,83 +181,88 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 
 	@Override
 	public void keyPressed(KeyEvent ke) {
-
 		if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			goback1();
-		} else
-
-		if (ke.getKeyCode() == KeyEvent.VK_X && keyspressed == 0) {
-			character.setLocation(200, 550);
-			keyspressed++;
-			startUp.KeysInputCount++;
-			if (runB = true && startUp.Dificulty == 3) {
-				run();
-				runB = false;
-			}
-		} else
-
-		if (ke.getKeyCode() == KeyEvent.VK_H && keyspressed == 1) {
-			character.setLocation(300, 550);
-			repaint();
-			keyspressed++;
-			startUp.KeysInputCount++;
-		} else
-
-		if (ke.getKeyCode() == KeyEvent.VK_S && keyspressed == 2) {
-			character.setLocation(400, 550);
-			repaint();
-			keyspressed++;
-			startUp.KeysInputCount++;
-		} else
-
-		if (ke.getKeyCode() == KeyEvent.VK_L && keyspressed == 3) {
-			character.setLocation(500, 550);
-			repaint();
-			keyspressed++;
-			startUp.KeysInputCount++;
-		} else
-
-		if (ke.getKeyCode() == KeyEvent.VK_F && keyspressed == 4) {
-			character.setLocation(600, 550);
-			repaint();
-			keyspressed++;
-			startUp.KeysInputCount++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_U && keyspressed == 5) {
-			character.setLocation(700, 550);
-			repaint();
-			keyspressed++;
-			startUp.KeysInputCount++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_O && keyspressed == 6) {
-			character.setLocation(800, 550);
-			repaint();
-			keyspressed++;
-			startUp.KeysInputCount++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_K && keyspressed == 7) {
-			character.setLocation(900, 550);
-			repaint();
-			keyspressed++;
-			startUp.KeysInputCount++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_G && keyspressed == 8) {
-			character.setLocation(1000, 550);
-			repaint();
-			keyspressed++;
-			startUp.KeysInputCount++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_J && keyspressed == 9) {
-			character.setLocation(1100, 550);
-			repaint();
-			keyspressed++;
-			startUp.KeysInputCount++;
-		} else {
-			startUp.LifesRemaining--;
-			DisplayLife();
 		}
+		if (acceptInput) {
+			if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
+				goback1();
+			} else
 
-		if (keyspressed == 10) {
-			timer.cancel();
-			character.setVisible(false);
-			displayLabel.setText("Level Complete");
-			btnBack.setVisible(true);
-			startUp.KeysInputCount = 0;
+			if (ke.getKeyCode() == KeyEvent.VK_X && keyspressed == 0) {
+				character.setLocation(200, 550);
+				keyspressed++;
+				startUp.KeysInputCount++;
+				if (runB = true && startUp.Dificulty == 3) {
+					run();
+					runB = false;
+				}
+			} else
+
+			if (ke.getKeyCode() == KeyEvent.VK_H && keyspressed == 1) {
+				character.setLocation(300, 550);
+				repaint();
+				keyspressed++;
+				startUp.KeysInputCount++;
+			} else
+
+			if (ke.getKeyCode() == KeyEvent.VK_S && keyspressed == 2) {
+				character.setLocation(400, 550);
+				repaint();
+				keyspressed++;
+				startUp.KeysInputCount++;
+			} else
+
+			if (ke.getKeyCode() == KeyEvent.VK_L && keyspressed == 3) {
+				character.setLocation(500, 550);
+				repaint();
+				keyspressed++;
+				startUp.KeysInputCount++;
+			} else
+
+			if (ke.getKeyCode() == KeyEvent.VK_F && keyspressed == 4) {
+				character.setLocation(600, 550);
+				repaint();
+				keyspressed++;
+				startUp.KeysInputCount++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_U && keyspressed == 5) {
+				character.setLocation(700, 550);
+				repaint();
+				keyspressed++;
+				startUp.KeysInputCount++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_O && keyspressed == 6) {
+				character.setLocation(800, 550);
+				repaint();
+				keyspressed++;
+				startUp.KeysInputCount++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_K && keyspressed == 7) {
+				character.setLocation(900, 550);
+				repaint();
+				keyspressed++;
+				startUp.KeysInputCount++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_G && keyspressed == 8) {
+				character.setLocation(1000, 550);
+				repaint();
+				keyspressed++;
+				startUp.KeysInputCount++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_J && keyspressed == 9) {
+				character.setLocation(1100, 550);
+				repaint();
+				keyspressed++;
+				startUp.KeysInputCount++;
+			} else {
+				startUp.LifesRemaining--;
+				DisplayLife();
+			}
+
+			if (keyspressed == 10) {
+				timer.cancel();
+				acceptInput = false;
+				character.setVisible(false);
+				displayLabel.setText("Level Complete");
+				btnBack.setVisible(true);
+				startUp.KeysInputCount = 0;
+			}
 		}
 	}
 
@@ -358,11 +363,9 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 			int i = 5;
 
 			public void run() {
-				// System.out.println(i--);
 				ltime.setText("Time Remaining: " + i--);
 				repaint();
 				if (i < 0) {
-
 					timer.cancel();
 					displayLabel.setText("Level Failed");
 					btnBack.setVisible(true);

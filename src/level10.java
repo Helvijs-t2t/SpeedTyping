@@ -15,11 +15,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
-public class level10 implements KeyListener, ActionListener,Runnable{
+public class level10 implements KeyListener, ActionListener, Runnable {
 	JFrame gameFrame = new JFrame();
 	public final int WIDTH = 1200, HEIGHT = 800;
 	public String displayString = "";
-	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0,ltime;
+	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0, ltime;
 	protected JLabel life1 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	protected JLabel life2 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	protected JLabel life3 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
@@ -29,6 +29,7 @@ public class level10 implements KeyListener, ActionListener,Runnable{
 	public boolean runB = true;
 	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
 	public JButton btnBack;
+	public boolean acceptInput = true;
 
 	public level10() {
 		if (startUp.Dificulty == 1) {
@@ -49,7 +50,7 @@ public class level10 implements KeyListener, ActionListener,Runnable{
 		ltime.setFont(new Font("Arial", 3, 50));
 		ltime.setForeground(Color.ORANGE.brighter());
 		backgroundPic.add(ltime);
-		
+
 		ltime = new JLabel("");
 		ltime.setSize(600, 80);
 		ltime.setLocation(300, 10);
@@ -160,6 +161,7 @@ public class level10 implements KeyListener, ActionListener,Runnable{
 			goback();
 		}
 	}
+
 	public void goback1() {
 		if (VarCheck.disableCount != 0 && keyspressed < 9) {
 			startUp.LifesRemaining = 3;
@@ -177,55 +179,58 @@ public class level10 implements KeyListener, ActionListener,Runnable{
 			goback1();
 
 		}
+		if (acceptInput) {
+			if (ke.getKeyCode() == KeyEvent.VK_7 && keyspressed == 0) {
+				character.setLocation(200, 550);
+				keyspressed++;
+				if (runB = true && startUp.Dificulty == 3) {
+					run();
+					runB = false;
+				}
+			} else
 
-		if (ke.getKeyCode() == KeyEvent.VK_7 && keyspressed == 0) {
-			character.setLocation(200, 550);
-			keyspressed++;
-			if (runB = true && startUp.Dificulty == 3) {
-				run();
-				runB = false;
+			if (ke.getKeyCode() == KeyEvent.VK_J && keyspressed == 1) {
+				character.setLocation(300, 550);
+				keyspressed++;
+			} else
+
+			if (ke.getKeyCode() == KeyEvent.VK_T && keyspressed == 2) {
+				character.setLocation(400, 550);
+				keyspressed++;
+			} else
+
+			if (ke.getKeyCode() == KeyEvent.VK_Z && keyspressed == 3) {
+				character.setLocation(500, 550);
+				keyspressed++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_P && keyspressed == 4) {
+				character.setLocation(600, 550);
+				keyspressed++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_O && keyspressed == 5) {
+				character.setLocation(700, 550);
+				keyspressed++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_0 && keyspressed == 6) {
+				character.setLocation(800, 550);
+				keyspressed++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_2 && keyspressed == 7) {
+				character.setLocation(900, 550);
+				keyspressed++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_4 && keyspressed == 8) {
+				character.setLocation(1000, 550);
+				keyspressed++;
+			} else if (ke.getKeyCode() == KeyEvent.VK_X && keyspressed == 9) {
+				character.setLocation(1100, 550);
+				keyspressed++;
+			} else {
+				startUp.LifesRemaining--;
+				DisplayLife();
 			}
-		} else
-
-		if (ke.getKeyCode() == KeyEvent.VK_J && keyspressed == 1) {
-			character.setLocation(300, 550);
-			keyspressed++;
-		} else
-
-		if (ke.getKeyCode() == KeyEvent.VK_T && keyspressed == 2) {
-			character.setLocation(400, 550);
-			keyspressed++;
-		} else
-
-		if (ke.getKeyCode() == KeyEvent.VK_Z && keyspressed == 3) {
-			character.setLocation(500, 550);
-			keyspressed++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_P && keyspressed == 4) {
-			character.setLocation(600, 550);
-			keyspressed++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_O && keyspressed == 5) {
-			character.setLocation(700, 550);
-			keyspressed++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_0 && keyspressed == 6) {
-			character.setLocation(800, 550);
-			keyspressed++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_2 && keyspressed == 7) {
-			character.setLocation(900, 550);
-			keyspressed++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_4 && keyspressed == 8) {
-			character.setLocation(1000, 550);
-			keyspressed++;
-		} else if (ke.getKeyCode() == KeyEvent.VK_X && keyspressed == 9) {
-			character.setLocation(1100, 550);
-			keyspressed++;
-		} else {
-			startUp.LifesRemaining--;
-			DisplayLife();
-		}
-		if (keyspressed == 10) {
-			character.setVisible(false);
-			displayLabel.setText("Level Complete");
-			btnBack.setVisible(true);
+			if (keyspressed == 10) {
+				timer.cancel();
+				acceptInput = false;
+				character.setVisible(false);
+				displayLabel.setText("Level Complete");
+				btnBack.setVisible(true);
+			}
 		}
 	}
 
@@ -257,52 +262,52 @@ public class level10 implements KeyListener, ActionListener,Runnable{
 	public void DisplayLife() {
 		if (startUp.Dificulty > 1) {
 
-		if (startUp.LifesRemaining == 3) {
-			life1.setSize(95, 95);
-			life1.setLocation(10, 670);
-			backgroundPic.add(life1);
-			life2.setSize(95, 95);
-			life2.setLocation(110, 670);
-			backgroundPic.add(life2);
-			life3.setSize(95, 95);
-			life3.setLocation(210, 670);
-			backgroundPic.add(life3);
-		}
+			if (startUp.LifesRemaining == 3) {
+				life1.setSize(95, 95);
+				life1.setLocation(10, 670);
+				backgroundPic.add(life1);
+				life2.setSize(95, 95);
+				life2.setLocation(110, 670);
+				backgroundPic.add(life2);
+				life3.setSize(95, 95);
+				life3.setLocation(210, 670);
+				backgroundPic.add(life3);
+			}
 
-		if (startUp.LifesRemaining == 2) {
-			life1.setSize(95, 95);
-			life1.setLocation(10, 670);
-			backgroundPic.add(life1);
-			life2.setSize(95, 95);
-			life2.setLocation(110, 670);
-			backgroundPic.add(life2);
-			life3.setSize(95, 95);
-			life3.setLocation(210, 670);
-			life3.setVisible(false);
-		}
-		if (startUp.LifesRemaining == 1) {
-			life1.setSize(95, 95);
-			life1.setLocation(10, 670);
-			backgroundPic.add(life1);
-			life2.setSize(95, 95);
-			life2.setLocation(110, 670);
-			life2.setVisible(false);
-			life3.setSize(95, 95);
-			life3.setLocation(210, 670);
-			life3.setVisible(false);
-		}
-		if (startUp.LifesRemaining == 0) {
-			life1.setVisible(false);
+			if (startUp.LifesRemaining == 2) {
+				life1.setSize(95, 95);
+				life1.setLocation(10, 670);
+				backgroundPic.add(life1);
+				life2.setSize(95, 95);
+				life2.setLocation(110, 670);
+				backgroundPic.add(life2);
+				life3.setSize(95, 95);
+				life3.setLocation(210, 670);
+				life3.setVisible(false);
+			}
+			if (startUp.LifesRemaining == 1) {
+				life1.setSize(95, 95);
+				life1.setLocation(10, 670);
+				backgroundPic.add(life1);
+				life2.setSize(95, 95);
+				life2.setLocation(110, 670);
+				life2.setVisible(false);
+				life3.setSize(95, 95);
+				life3.setLocation(210, 670);
+				life3.setVisible(false);
+			}
+			if (startUp.LifesRemaining == 0) {
+				life1.setVisible(false);
 
-			displayLabel.setText("Level Failed");
-			btnBack.setVisible(true);
-			startUp.KeysInputCount = 0;
-			VarCheck.levelspassed = 0;
-			startUp.LifesRemaining = 3;
-		}
-		gameFrame.repaint();
+				displayLabel.setText("Level Failed");
+				btnBack.setVisible(true);
+				startUp.KeysInputCount = 0;
+				VarCheck.levelspassed = 0;
+				startUp.LifesRemaining = 3;
+			}
+			gameFrame.repaint();
 
-	}
+		}
 	}
 
 	@Override

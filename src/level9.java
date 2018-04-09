@@ -29,7 +29,7 @@ public class level9 implements KeyListener, ActionListener,Runnable {
 	public boolean runB = true;
 	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
 	public JButton btnBack;
-
+	public boolean acceptInput = true;
 	public level9() {
 		if (startUp.Dificulty == 1) {
 			startUp.LifesRemaining = 999;
@@ -172,7 +172,7 @@ public class level9 implements KeyListener, ActionListener,Runnable {
 			goback1();
 
 		}
-
+if(acceptInput) {
 		if (ke.getKeyCode() == KeyEvent.VK_Z && keyspressed == 0) {
 			character.setLocation(200, 550);
 			keyspressed++;
@@ -218,10 +218,13 @@ public class level9 implements KeyListener, ActionListener,Runnable {
 			DisplayLife();
 		}
 		if (keyspressed == 10) {
+			timer.cancel();
+			acceptInput = false;
 			character.setVisible(false);
 			displayLabel.setText("Level Complete");
 			btnBack.setVisible(true);
 		}
+}
 	}
 
 	public void goback() {
