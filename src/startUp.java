@@ -31,8 +31,13 @@ public class startUp extends JFrame implements ActionListener {
 	public static int LifesRemaining = 3;
 	public static int KeysInputCount = 0;
 	public static boolean isLevelFinished = false;
-	public static void main(String[] args) throws IOException {
-		new startUp();
+	public static void main(String[] args)  {
+		try {
+			new startUp();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 
 	}
 
@@ -42,7 +47,7 @@ public class startUp extends JFrame implements ActionListener {
 
 		Launcher.setSize(820, 600);
 		Launcher.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		Launcher.setTitle("Test\u2122");
+		Launcher.setTitle("Speed Typing\u2122");
 		Launcher.setLocationRelativeTo(null);
 		Launcher.setResizable(false);
 		Launcher.setLayout(new BorderLayout());

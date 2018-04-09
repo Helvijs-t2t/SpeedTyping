@@ -179,7 +179,7 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 			startUp.Dificulty = 2;
 		}
 		if (ev.getSource()==hard) {
-			textArea1.setText("<html>Experts have only one life thorough the whole game and limited time for each level.</html>");
+			textArea1.setText("<html>Experts have 3 lifes for the whole game and limited time of 5 seconds for each level.</html>");
 			startUp.Dificulty = 3;
 		}
 		

@@ -49,7 +49,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 			displayString = displayString + "  " + alphabet[x];
 		}
 
-		gameFrame.setTitle("Speed Typing Alpha");
+		gameFrame.setTitle("Speed Typing\u2122");
 		gameFrame.setSize(WIDTH, HEIGHT);
 		gameFrame.addKeyListener(this);
 		gameFrame.setResizable(false);
@@ -171,9 +171,6 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 					startUp.LifesRemaining = 0;
 				}
 			}
-			// if (startUp.LifesRemaining > 0 && startUp.LifesRemaining < 3) {
-			// startUp.LifesRemaining++;
-			// }
 			timer.cancel();
 			goback();
 		}
@@ -185,9 +182,6 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 			goback1();
 		}
 		if (acceptInput) {
-			if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
-				goback1();
-			} else
 
 			if (ke.getKeyCode() == KeyEvent.VK_X && keyspressed == 0) {
 				character.setLocation(200, 550);
@@ -293,7 +287,6 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 			gameFrame.setVisible(false);
 			new levelCheck();
 		} else {
-			timer.cancel();
 			goback();
 		}
 	}
@@ -367,6 +360,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 				repaint();
 				if (i < 0) {
 					timer.cancel();
+					acceptInput = false;
 					displayLabel.setText("Level Failed");
 					btnBack.setVisible(true);
 				}

@@ -328,6 +328,7 @@ public class level4 implements KeyListener, ActionListener, Runnable {
 				if (i < 0) {
 
 					timer.cancel();
+					acceptInput = false;
 					displayLabel.setText("Level Failed");
 					btnBack.setVisible(true);
 				}

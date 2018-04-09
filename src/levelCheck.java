@@ -23,14 +23,14 @@ public class levelCheck extends JFrame implements ActionListener, KeyListener {
 	Border border1 = BorderFactory.createDashedBorder(Color.red, 12, 1, 1, true);
 
 	Font btnFont = new Font("Arial", 5, 55);
-	static JButton Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8, Level9, Level10;
+	static JButton Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8, Level9, Level10, back;
 
 	public levelCheck() {
 
 		JLabel profileBG = new JLabel(new ImageIcon(getClass().getResource("profile_BG.jpg")));
 
 		profile.addKeyListener(this);
-
+		profile.setTitle("Speed Typing\u2122");
 		profile.setSize(1180, 800);
 		profile.setLocationRelativeTo(null);
 		profile.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -47,6 +47,18 @@ public class levelCheck extends JFrame implements ActionListener, KeyListener {
 		Level1.setContentAreaFilled(false);
 		Level1.addActionListener(this);
 		profileBG.add(Level1);
+
+		back = new JButton("Back");
+		back.setSize(200, 40);
+		back.setLocation(5, 520);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setForeground(Color.RED.darker());
+		back.setFont(new Font("Arial", 5, 35));
+		back.setContentAreaFilled(false);
+		back.addActionListener(this);
+		back.setVisible(true);
+		//profileBG.add(back);
 
 		Level2 = new JButton("2");
 		Level2.setSize(180, 180);
@@ -148,6 +160,8 @@ public class levelCheck extends JFrame implements ActionListener, KeyListener {
 		profileBG.add(Level10);
 
 		VarCheck.checklevels();
+		profile.repaint();
+
 		profile.setVisible(true);
 	}
 
@@ -194,6 +208,14 @@ public class levelCheck extends JFrame implements ActionListener, KeyListener {
 			profile.setVisible(false);
 			new level10();
 		}
+		if (e.getSource() == back) {
+			profile.setVisible(false);
+			try {
+
+				new startUp();
+			} catch (IOException es) {
+			}
+		}
 
 	}
 
@@ -203,6 +225,7 @@ public class levelCheck extends JFrame implements ActionListener, KeyListener {
 		if (ke.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			profile.setVisible(false);
 			try {
+				
 				new startUp();
 			} catch (IOException e) {
 			}

@@ -33,7 +33,7 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 
 	public level2() {
 
-		gameFrame.setTitle("Speed Typing Alpha");
+		gameFrame.setTitle("Speed Typing\u2122");
 		gameFrame.setSize(WIDTH, HEIGHT);
 		gameFrame.addKeyListener(this);
 		gameFrame.setResizable(false);
@@ -323,6 +323,7 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 				if (i < 0) {
 
 					timer.cancel();
+					acceptInput = false;
 					displayLabel.setText("Level Failed");
 					btnBack.setVisible(true);
 				}
