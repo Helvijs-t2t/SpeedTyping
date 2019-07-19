@@ -51,6 +51,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 
 		gameFrame.setTitle("Speed Typing\u2122");
 		gameFrame.setSize(WIDTH, HEIGHT);
+		//gameFrame.setSize(getMaximumSize());
 		gameFrame.addKeyListener(this);
 		gameFrame.setResizable(false);
 		gameFrame.setVisible(true);

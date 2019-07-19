@@ -57,9 +57,9 @@ public class startUp extends JFrame implements ActionListener {
 		password.setForeground(Color.white);
 		Launcher.add(password);
 
-		welcome = new JLabel("Speed typing Alpha");
+		welcome = new JLabel("Speed typing");
 		welcome.setSize(600, 70);
-		welcome.setLocation(150, 5);
+		welcome.setLocation(220, 5);
 		welcome.setFont(welcomeFont);
 		welcome.setForeground(Color.green.brighter());
 		Launcher.add(welcome);
