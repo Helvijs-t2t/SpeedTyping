@@ -27,7 +27,7 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 	public int spresseed = 0;
 	public boolean runB = true;
 	public final Timer timer = new Timer();
-	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
+	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl2.png")));
 	public JButton btnBack;
 	public boolean acceptInput = true;
 

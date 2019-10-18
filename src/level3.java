@@ -24,7 +24,7 @@ public class level3 implements KeyListener, ActionListener, Runnable {
 	protected JLabel life3 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	public JLabel character = new JLabel(new ImageIcon(getClass().getResource("rsz_stman.png")));
 	public int keyspressed = 0;
-	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
+	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl3.jpg")));
 	public JButton btnBack;
 	public final Timer timer = new Timer();
 	public boolean runB = true;
