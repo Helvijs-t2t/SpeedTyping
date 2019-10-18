@@ -27,7 +27,7 @@ public class level4 implements KeyListener, ActionListener, Runnable {
 	public boolean acceptInput = true;
 	public final Timer timer = new Timer();
 	public boolean runB = true;
-	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
+	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl4.png")));
 	public JButton btnBack;
 
 	public level4() {

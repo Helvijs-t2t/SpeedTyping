@@ -26,7 +26,8 @@ public class level10 implements KeyListener, ActionListener, Runnable {
 	public int keyspressed = 0;
 	public final Timer timer = new Timer();
 	public boolean runB = true;
-	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl1.png")));
+	JLabel backgroundPic = new JLabel(new ImageIcon(getClass().getResource("lvl10.png")));
+	
 	public JButton btnBack;
 	public boolean acceptInput = true;
 
