@@ -23,7 +23,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 	public static level1 Startgame;
 	public final int WIDTH = 1200, HEIGHT = 760;
 	public String displayString = "";
-	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0, ltime;
+	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0, ltime, ScoreLabel;
 	public JLabel life1 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	public JLabel life2 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	public JLabel life3 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
@@ -35,7 +35,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 	public int temp = 0;
 	public JButton btnBack;
 	public boolean acceptInput = true;
-
+	
 	public level1() {
 		char[] alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
 				's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
@@ -145,12 +145,21 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 		displayLabel.setFont(new Font("Arial", 3, 70));
 		displayLabel.setForeground(Color.RED.darker());
 		backgroundPic.add(displayLabel);
+		
+		// Label for score 
+		ScoreLabel = new JLabel("");
+		ScoreLabel.setSize(600, 80);
+		ScoreLabel.setLocation(330, 450);
+		ScoreLabel.setFont(new Font("Arial", 3, 70));
+		ScoreLabel.setForeground(Color.RED.darker());
+		backgroundPic.add(ScoreLabel);
+
 
 		ltime = new JLabel("");
 		ltime.setSize(600, 80);
 		ltime.setLocation(300, 10);
 		ltime.setFont(new Font("Arial", 3, 50));
-		ltime.setForeground(Color.ORANGE.brighter());
+		ltime.setForeground(Color.black.brighter());
 		backgroundPic.add(ltime);
 
 		btnBack = new JButton("Back");
@@ -191,6 +200,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 				character.setLocation(200, 550);
 				keyspressed++;
 				startUp.KeysInputCount++;
+				startUp.Score++;
 				if (runB = true && startUp.Dificulty == 3) {
 					run();
 					runB = false;
@@ -202,6 +212,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 				repaint();
 				keyspressed++;
 				startUp.KeysInputCount++;
+				startUp.Score++;
 			} else
 
 			if (ke.getKeyCode() == KeyEvent.VK_S && keyspressed == 2) {
@@ -209,6 +220,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 				repaint();
 				keyspressed++;
 				startUp.KeysInputCount++;
+				startUp.Score++;
 			} else
 
 			if (ke.getKeyCode() == KeyEvent.VK_L && keyspressed == 3) {
@@ -216,6 +228,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 				repaint();
 				keyspressed++;
 				startUp.KeysInputCount++;
+				startUp.Score++;
 			} else
 
 			if (ke.getKeyCode() == KeyEvent.VK_F && keyspressed == 4) {
@@ -223,33 +236,40 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 				repaint();
 				keyspressed++;
 				startUp.KeysInputCount++;
+				startUp.Score++;
 			} else if (ke.getKeyCode() == KeyEvent.VK_U && keyspressed == 5) {
 				character.setLocation(700, 550);
 				repaint();
 				keyspressed++;
 				startUp.KeysInputCount++;
+				startUp.Score++;
 			} else if (ke.getKeyCode() == KeyEvent.VK_O && keyspressed == 6) {
 				character.setLocation(800, 550);
 				repaint();
 				keyspressed++;
 				startUp.KeysInputCount++;
+				startUp.Score++;
 			} else if (ke.getKeyCode() == KeyEvent.VK_K && keyspressed == 7) {
 				character.setLocation(900, 550);
 				repaint();
 				keyspressed++;
 				startUp.KeysInputCount++;
+				startUp.Score++;
 			} else if (ke.getKeyCode() == KeyEvent.VK_G && keyspressed == 8) {
 				character.setLocation(1000, 550);
 				repaint();
 				keyspressed++;
 				startUp.KeysInputCount++;
+				startUp.Score++;
 			} else if (ke.getKeyCode() == KeyEvent.VK_J && keyspressed == 9) {
 				character.setLocation(1100, 550);
 				repaint();
 				keyspressed++;
 				startUp.KeysInputCount++;
+				startUp.Score++;
 			} else if(ke.getKeyCode() != KeyEvent.VK_ESCAPE) {
 				startUp.LifesRemaining--;
+				startUp.Score--;
 				DisplayLife();
 			}
 
@@ -258,6 +278,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 				acceptInput = false;
 				character.setVisible(false);
 				displayLabel.setText("Level Complete");
+			    ScoreLabel.setText("You Scored :" + startUp.Score); //  displays the score 
 				btnBack.setVisible(true);
 				startUp.KeysInputCount = 0;
 			}
@@ -304,7 +325,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 	}
 
 	public void DisplayLife() {
-		if (startUp.Dificulty > 1) {
+		if (startUp.Dificulty >= 1) {
 			if (startUp.LifesRemaining == 3) {
 				life1.setSize(95, 95);
 				life1.setLocation(10, 640);
@@ -343,6 +364,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 				life1.setVisible(false);
 				displayLabel.setText("Level Failed");
 				btnBack.setVisible(true);
+				startUp.Score = 0;
 				startUp.KeysInputCount = 0;
 				VarCheck.levelspassed = 0;
 				startUp.LifesRemaining = 3;
@@ -365,6 +387,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 					acceptInput = false;
 					displayLabel.setText("Level Failed");
 					startUp.LifesRemaining=3;
+					startUp.Score = 0;
 					btnBack.setVisible(true);
 				}
 			}
