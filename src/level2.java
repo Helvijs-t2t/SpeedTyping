@@ -315,6 +315,8 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 
 				displayLabel.setText("Level Failed");
 				btnBack.setVisible(true);
+				if(startUp.Score <= 0 ) { startUp.Score = 0; }
+				ScoreLabel.setText("You Scored :" + startUp.Score);
 				startUp.KeysInputCount = 0;
 				VarCheck.levelspassed = 0;
 				startUp.LifesRemaining = 3;

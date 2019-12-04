@@ -200,7 +200,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 				character.setLocation(200, 550);
 				keyspressed++;
 				startUp.KeysInputCount++;
-				startUp.Score++;
+				startUp.Score++; //  score increased by 1
 				if (runB = true && startUp.Dificulty == 3) {
 					run();
 					runB = false;
@@ -269,7 +269,7 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 				startUp.Score++;
 			} else if(ke.getKeyCode() != KeyEvent.VK_ESCAPE) {
 				startUp.LifesRemaining--;
-				startUp.Score--;
+				startUp.Score--; //  score decreased by 1
 				DisplayLife();
 			}
 
@@ -363,8 +363,10 @@ public class level1 extends JFrame implements ActionListener, KeyListener, Runna
 			if (startUp.LifesRemaining == 0) {
 				life1.setVisible(false);
 				displayLabel.setText("Level Failed");
+				if(startUp.Score <= 0 ) { startUp.Score = 0; }
+				ScoreLabel.setText("You Scored :" + startUp.Score);
 				btnBack.setVisible(true);
-				startUp.Score = 0;
+				startUp.Score = 0; // score reset 
 				startUp.KeysInputCount = 0;
 				VarCheck.levelspassed = 0;
 				startUp.LifesRemaining = 3;
