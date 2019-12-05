@@ -18,7 +18,7 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 	JFrame gameFrame = new JFrame();
 	public final int WIDTH = 1200, HEIGHT = 760;
 	public String displayString = "";
-	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0, ltime;
+	public JLabel displayLabel, l1, l2, l3, l4, l5, l6, l7, l8, l9, l0, ltime, ScoreLabel;
 	protected JLabel life1 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	protected JLabel life2 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
 	protected JLabel life3 = new JLabel(new ImageIcon(getClass().getResource("Lifes.png")));
@@ -133,6 +133,14 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 		displayLabel.setFont(new Font("Arial", 3, 70));
 		displayLabel.setForeground(Color.RED.darker());
 		backgroundPic.add(displayLabel);
+		
+		// Label for score 
+		ScoreLabel = new JLabel("");
+		ScoreLabel.setSize(600, 80);
+		ScoreLabel.setLocation(330, 450);
+		ScoreLabel.setFont(new Font("Arial", 3, 70));
+		ScoreLabel.setForeground(Color.RED.darker());
+		backgroundPic.add(ScoreLabel);
 
 		btnBack = new JButton("Back");
 		btnBack.setSize(200, 40);
@@ -180,37 +188,38 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 
 			if (ke.getKeyCode() == KeyEvent.VK_1 && keyspressed == 1) {
 				character.setLocation(300, 550);
-				keyspressed++;
+				keyspressed++;startUp.Score++;
 			} else
 
 			if (ke.getKeyCode() == KeyEvent.VK_0 && keyspressed == 2) {
 				character.setLocation(400, 550);
-				keyspressed++;
+				keyspressed++;startUp.Score++;
 			} else
 
 			if (ke.getKeyCode() == KeyEvent.VK_G && keyspressed == 3) {
 				character.setLocation(500, 550);
-				keyspressed++;
+				keyspressed++;startUp.Score++;
 			} else if (ke.getKeyCode() == KeyEvent.VK_N && keyspressed == 4) {
 				character.setLocation(600, 550);
-				keyspressed++;
+				keyspressed++;startUp.Score++;
 			} else if (ke.getKeyCode() == KeyEvent.VK_R && keyspressed == 5) {
 				character.setLocation(700, 550);
-				keyspressed++;
+				keyspressed++;startUp.Score++;
 			} else if (ke.getKeyCode() == KeyEvent.VK_Q && keyspressed == 6) {
 				character.setLocation(800, 550);
-				keyspressed++;
+				keyspressed++;startUp.Score++;
 			} else if (ke.getKeyCode() == KeyEvent.VK_P && keyspressed == 7) {
 				character.setLocation(900, 550);
-				keyspressed++;
+				keyspressed++;startUp.Score++;
 			} else if (ke.getKeyCode() == KeyEvent.VK_4 && keyspressed == 8) {
 				character.setLocation(1000, 550);
-				keyspressed++;
+				keyspressed++;startUp.Score++;
 			} else if (ke.getKeyCode() == KeyEvent.VK_V && keyspressed == 9) {
 				character.setLocation(1100, 550);
-				keyspressed++;
+				keyspressed++;startUp.Score++;
 			} else if (ke.getKeyCode() != KeyEvent.VK_ESCAPE) {
 				startUp.LifesRemaining--;
+				startUp.Score--;
 				DisplayLife();
 			}
 			if (keyspressed == 10) {
@@ -218,6 +227,7 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 				acceptInput = false;
 				character.setVisible(false);
 				displayLabel.setText("Level Complete");
+				ScoreLabel.setText("You Scored :" + startUp.Score); //  displays the score 
 				btnBack.setVisible(true);
 			}
 		}
@@ -265,7 +275,7 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 	}
 
 	public void DisplayLife() {
-		if (startUp.Dificulty > 1) {
+		if (startUp.Dificulty >= 1) {
 			if (startUp.LifesRemaining == 3) {
 				life1.setSize(95, 95);
 				life1.setLocation(10, 640);
@@ -305,9 +315,12 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 
 				displayLabel.setText("Level Failed");
 				btnBack.setVisible(true);
+				if(startUp.Score <= 0 ) { startUp.Score = 0; }
+				ScoreLabel.setText("You Scored :" + startUp.Score);
 				startUp.KeysInputCount = 0;
 				VarCheck.levelspassed = 0;
 				startUp.LifesRemaining = 3;
+				startUp.Score = 0;
 			}
 			gameFrame.repaint();
 
@@ -325,6 +338,7 @@ public class level2 implements KeyListener, ActionListener, Runnable {
 				gameFrame.repaint();
 				if (i < 0) {
 					startUp.LifesRemaining=3;
+					startUp.Score = 0;
 					timer.cancel();
 					acceptInput = false;
 					displayLabel.setText("Level Failed");

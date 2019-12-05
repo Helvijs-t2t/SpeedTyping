@@ -63,7 +63,7 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 		Dificulty = new JLabel("Difficulty:");
 		Dificulty.setSize(250,40);
 		Dificulty.setLocation(60,70);
-		Dificulty.setForeground(Color.BLUE.darker());
+		Dificulty.setForeground(Color.yellow.darker());
 		Dificulty.setFont(labelFont);
 		background.add(Dificulty);
 		
@@ -84,7 +84,7 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 		easy.setLocation(40,150);
 		easy.setOpaque(false);
 		easy.setFocusPainted(false);
-		easy.setForeground(Color.ORANGE.brighter());
+		easy.setForeground(Color.blue.brighter());
 		easy.setFont(new Font("Arial",5,35));
 		easy.setContentAreaFilled(false);
 		easy.addActionListener(this);
@@ -96,7 +96,7 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 		medium.setLocation(40,250);
 		medium.setOpaque(false);
 		medium.setFocusPainted(false);
-		medium.setForeground(Color.ORANGE.brighter());
+		medium.setForeground(Color.orange.darker());
 		medium.setFont(new Font("Arial",5,35));
 		medium.setContentAreaFilled(false);
 		medium.addActionListener(this);
@@ -108,7 +108,7 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 		hard.setLocation(40,350);
 		hard.setOpaque(false);
 		hard.setFocusPainted(false);
-		hard.setForeground(Color.ORANGE.brighter());
+		hard.setForeground(Color.red.brighter());
 		hard.setFont(new Font("Arial",5,35));
 		hard.setContentAreaFilled(false);
 		hard.addActionListener(this);

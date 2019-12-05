@@ -24,6 +24,7 @@ public class startUp extends JFrame implements ActionListener {
 	JLabel user, welcome, password, message;
 	JTextField userID, userPW;
 	public static int Dificulty = 1;
+	public static int Score = 0; // score tracker
 	public static int LifesRemaining = 3;
 	public static int KeysInputCount = 0;
 	public static boolean isLevelFinished = false;
@@ -72,7 +73,7 @@ public class startUp extends JFrame implements ActionListener {
 		start.setFont(ButtonFont);
 		start.addActionListener(this);
 		start.setFocusPainted(false);
-		start.setForeground(Color.WHITE.brighter());
+		start.setForeground(Color.red.brighter());
 		Launcher.add(start);
 
 		options = new JButton("Options");
@@ -83,7 +84,7 @@ public class startUp extends JFrame implements ActionListener {
 		options.setFont(ButtonFont);
 		options.addActionListener(this);
 		options.setFocusPainted(false);
-		options.setForeground(Color.WHITE.brighter());
+		options.setForeground(Color.red.brighter());
 		Launcher.add(options);
 
 		quit = new JButton("Quit");
@@ -94,7 +95,7 @@ public class startUp extends JFrame implements ActionListener {
 		quit.setFont(ButtonFont);
 		quit.addActionListener(this);
 		quit.setFocusPainted(false);
-		quit.setForeground(Color.WHITE.brighter());
+		quit.setForeground(Color.red.brighter());
 		Launcher.add(quit);
 
 		h = new JButton("");

@@ -260,7 +260,7 @@ public class level10 implements KeyListener, ActionListener, Runnable {
 	}
 
 	public void DisplayLife() {
-		if (startUp.Dificulty > 1) {
+		if (startUp.Dificulty >= 1) {
 
 			if (startUp.LifesRemaining == 3) {
 				life1.setSize(95, 95);
