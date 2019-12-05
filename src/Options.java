@@ -158,17 +158,17 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 			goback();
 		}
 		if (ev.getSource()==easy) {
-			textArea1.setText("<html>Beginner  - you will have unlimited time and unlimited mistakes for all levels.</html>");
+			textArea1.setText("<html>Beginner  - Take as much time as you need to complete each level.</html>");
 			startUp.Dificulty = 1;
 		}
 		if (ev.getSource()==medium) {
-			textArea1.setText("<html>Advanced  - You will have 3 lifes. Each time wrong button is pressed one life will be lost."
-					+ "By completing a level, award of +1 life will be given. Game is lost if all 3 lifes are gone before finishing the last level."
-					+ " If player have 3 lifes when level is completed, no extra lifes will be awarded.</html>");
+			textArea1.setText("<html>Advanced  - Game starts with an award of 3 lives. Each mistake takes one live away, "
+					+ "each level finished adds one live back. Losing all 3 lives will erase the unlocked levels."
+					+ " If player has 3 lives when level is completed, no extra lives will be awarded.</html>");
 			startUp.Dificulty = 2;
 		}
 		if (ev.getSource()==hard) {
-			textArea1.setText("<html>Experts have 3 lifes for the whole game and limited time of 5 seconds for each level.</html>");
+			textArea1.setText("<html>Experts have 3 lives for the whole game and limited time of 5 seconds for each level.</html>");
 			startUp.Dificulty = 3;
 		}
 		
