@@ -150,7 +150,7 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 		}
 		
 		if (ev.getSource()==Controls) {
-			textArea1.setText("<html> 1.Esc button can be pressed at any time, to switch from one menu to another and leave any level . "
+			textArea1.setText("<html> 1.Esc button can be pused at any time, to switch from one menu to another and to leave any level . "
 					+ "  2. If the player leaves level without completing it, any progress in the level won't be saved.  </html>");
 		}
 		
@@ -158,7 +158,7 @@ public class Options extends JFrame implements ActionListener,KeyListener {
 			goback();
 		}
 		if (ev.getSource()==easy) {
-			textArea1.setText("<html>Beginner  - Take as much time as you need to complete each level.</html>");
+			textArea1.setText("<html>Beginner  - Take as much time and attempts as you need to complete each level.</html>");
 			startUp.Dificulty = 1;
 		}
 		if (ev.getSource()==medium) {
