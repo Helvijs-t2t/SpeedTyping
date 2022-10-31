@@ -8,4 +8,4 @@ Software and any parts of the software must be issue with the same license
  
  Feel free to contact me on oleninshelvijs@gmail.com for any questions.
 
-  This project is still opened and awaiting for help.
+  This project is opened and awaiting help.
